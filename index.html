@@ -27,7 +27,7 @@
 </div>
 
 <div id="impress">
-    <div id="init" style="line-height:2" class="step boxed" data-scale=3 data-x="-4000" data-y="-2500" >
+    <div id="init" style="line-height:2" class="step" data-scale=3 data-x="-4000" data-y="-2500" >
         Vous préférez :
         <ul>
             <li><a href="#portfolio">portfolio?</a></li>
@@ -326,7 +326,7 @@
    <div class="step" data-scale=5 data-x="-16000" data-y="00" 
   data-rotate=-90 >
       Simulation multi agent avec matplotlib<br/>
-      <a href=https://github.com/jul/KISSMyAgent/wiki />KissMyAgent</a><br/>
+      <a href=https://github.com/jul/KISSMyAgent/wiki >KissMyAgent</a><br/>
       <img src=img/kiss.jpg  />
     </div>
    <div class="step" data-scale=5 data-x="-20000" data-y="2000" 
@@ -360,42 +360,11 @@ version  interactive
 <a href=http://github.com/jul >github.com/jul</a><br/>
 Tel: 514 999 7453
 </div>
-
 </div>
 
-
-<!--
-    
-    Hint is not related to impress.js in any way.
-    
-    But it can show you how to use impress.js features in creative way.
-    
-    When the presentation step is shown (selected) its element gets the class of "active" and the body element
-    gets the class based on active step id `impress-on-ID` (where ID is the step's id)... It may not be
-    so clear because of all these "ids" in previous sentence, so for example when the first step (the one with
-    the id of `bored`) is active, body element gets a class of `impress-on-bored`.
-    
-    This class is used by this hint below. Check CSS file to see how it's shown with delayed CSS animation when
-    the first step of presentation is visible for a couple of seconds.
-    
-    ...
-    
-    And when it comes to this piece of JavaScript below ... kids, don't do this at home ;)
-    It's just a quick and dirty workaround to get different hint text for touch devices.
-    In a real world it should be at least placed in separate JS file ... and the touch content should be
-    probably just hidden somewhere in HTML - not hard-coded in the script.
-    
-    Just sayin' ;)
-    
--->
 <div class="hint">
     <p>Use a spacebar or arrow keys to navigate</p>
 </div>
-<script>
-if ("ontouchstart" in document.documentElement) { 
-    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
-}
-</script>
 
 
 <!--
@@ -419,11 +388,14 @@ if ("ontouchstart" in document.documentElement) {
 <script>
 
 $(document).ready(function() { 
+impress().init();
 var class_saver=[];
 //$('.button').button();
-cv=$('#printable').html();
-$(".content").each(function(i,el) { cv+=$(el).html() });
-$('#printable').html(cv);
+    cv=$('#printable').html();
+    $(".content").each(function(i,el) { cv+=$(el).html() });
+    $('#printable').html(cv);
+   
+alert($("#impress").html().length < 1000 );
 $('#jcprt').click( function() { 
     window.location.hash = 'printable';
     class_saver=$("body").attr("class");
@@ -445,11 +417,10 @@ $('.button').click(function() {
     
     $('#impress').fadeIn({ 'speed': "slow"});
     $("body").attr("class",class_saver);
-    impress().init();
     impress().goto("init");
     $("body").css("overflow", "hidden");
 });
-if (window.location.hash.indexOf("printable")!= -1 || ! window.location.hash ) { 
+if (window.location.hash.indexOf("printable")!= -1){
     $('#jcprt').click();
 } else { 
     $('#printable').hide();
