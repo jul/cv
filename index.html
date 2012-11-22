@@ -97,7 +97,7 @@
        en collaboration avec les TelCo. La
        mission consitait à développer, suivre les chantiers,
        encadrer les nouveaux arrivants. 
-       <table class=content>
+       <table >
            <tr >
               <td class=field >
                 Technologies
@@ -437,16 +437,20 @@ $('#jcprt').click( function() {
     $('#printable').zIndex=90000;
     window.location.hash = 'printable';
 });
-window.location.hash = 'printable';
-$('#jcprt').click();
 $(".button").click(function() {
     $("#printable").fadeOut();
     impress().init();
     $('#impress').fadeIn();
     impress().goto("init");
-    $("body").css("overflow","auto");
+    $("body").css("overflow","hidden");
     $("body").css("position","relative");
 });
+if ( "printable" == window.location.hash || ! window.location.hash ) { 
+    $('#jcprt').click();
+} else { 
+    impress().init();
+    impress().goto(window.location.hash);
+}
 
 });
 </script>
