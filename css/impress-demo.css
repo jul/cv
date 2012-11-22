@@ -141,9 +141,9 @@ a:hover, a:focus {
 
 .step {
     position: relative;
-    display:block;
+/*    display:block;*/
     max-width:50em;
-    min-width:40em;
+    min-width:35em;
    /* width: 900px;
     height: 700px;*/
     padding: 40px;
@@ -157,7 +157,7 @@ a:hover, a:focus {
 
     font-family: 'PT Serif', georgia, serif;
     /*font-size: 48px;*/
-    font-size:2em;
+    font-size:1.5em;
     line-height: 1.5;
 }
 
@@ -168,7 +168,7 @@ a:hover, a:focus {
 */
 .impress-enabled .step {
     margin: 0;
-    opacity: 0.3;
+    opacity: 0.2;
 
     -webkit-transition: opacity 1s;
     -moz-transition:    opacity 1s;
@@ -280,7 +280,7 @@ a:hover, a:focus {
     
     Let's move to 'big thoughts' with centered text and custom font sizes.
 */
-#big {
+.big {
     width: 600px;
     text-align: center;
     font-size: 60px;

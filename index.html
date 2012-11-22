@@ -353,11 +353,9 @@
 </div>
 <div id=printable >
 <center><span class=button >
-
 version  interactive
 </span></center><br/>
-<a class="hidden" href="https://github.com/jul/cv"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
-<div class=decal >Julien Tayon<br/>
+<div class=decal2 >Julien Tayon<br/>
 <a href=mailto:julien@tayon.net >Julien@tayon.net</a><br/>
 <a href=http://github.com/jul >github.com/jul</a><br/>
 Tel: 514 999 7453
@@ -421,65 +419,44 @@ if ("ontouchstart" in document.documentElement) {
 <script>
 
 $(document).ready(function() { 
-window.onresize=function() {
-    $('.step').each(function()
-    {
-        var width  = $(this).width();
-        var height = $(this).height();
-        var parentWidth  = $(this).parent().width();
-        var parentHeight = $(this).parent().height();
-        console.log(this);
-
-        if(width/parentWidth < height/parentHeight)
-        {
-            newWidth  = parentWidth;
-            newHeight = newWidth/width*height;
-        }
-        else
-        {
-            newHeight = parentHeight;
-            newWidth  = newHeight/height*width;
-        }
-        margin_top  = (parentHeight - newHeight) / 2;
-        margin_left = (parentWidth  - newWidth ) / 2;
-        mtop=int( parentHeight/2);
-
-        $(this).css({'margin-bottom'   : -margin_top + 'px',
-
-                   'margin-left':'auto',
-                   'margin-right':'auto',
-                     'height'     :newHeight   + 'px',
-                     'width'      :newWidth    + 'px'});
-    });
-}
-$(".button").button();
+//$('.button').button();
 cv=$('#printable').html();
 $(".content").each(function(i,el) { cv+=$(el).html() });
 $('#printable').html(cv);
 $('#jcprt').click( function() { 
-    $("body").removeAttr("class");
+    window.location.hash = 'printable';
+  /*  
     $("body").css("overflow","auto");
     $("body").css("position","relative");
     $('#printable').css("position","relative");
+    
     $('#printable').css("height","100%");
+    */$("body").removeAttr("class");
     $("#impress").hide();
     $("#printable").fadeIn();
     $(".fallback-message").hide();
     $('#printable').zIndex=90000;
-    window.location.hash = 'printable';
+
 });
-$(".button").click(function() {
-    $("#printable").fadeOut();
-    $("body").css("overflow","hidden");
-    $("body").css("position","relative");
-    $('#impress').fadeIn();
+
+$('.button').click(function() {
+    window.location.hash = 'init';
+    $('#printable').hide();
+    /*$('#printable').css("position","absolute");*/
+
+    $('#impress').show();
     impress().init();
     impress().goto("init");
-/*    window.onresize();*/
 });
-if ( "printable" == window.location.hash || ! window.location.hash ) { 
+console.log("here11");
+if (window.location.hash.indexOf("printable")!= -1 || ! window.location.hash ) { 
+console.log(window.location.hash );
     $('#jcprt').click();
+    console.log("ok");
 } else { 
+console.log("here112");
+console.log(window.location.hash );
+    $('#printable').hide();
     impress().init();
     impress().goto(window.location.hash);
 }
