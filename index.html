@@ -27,12 +27,12 @@
 </div>
 
 <div id="impress">
-    <div id="init" class="step" data-x="-5000" data-y="-2000" >
+    <div id="init" style="line-height:2" class="step boxed" data-scale=3 data-x="-4000" data-y="-2500" >
         Vous préférez :
         <ul>
             <li><a href="#portfolio">portfolio?</a></li>
             <li><a  href="#CVinter">CV interactif</a></li>
-            <li><a id=jcprt href="#printable">CV en version imprimable(mais non scrollable avec les touches)</a></li>
+            <li><a id=jcprt href="#printable">CV en version imprimable</a></li>
         </ul>
     </div>
     
@@ -43,7 +43,7 @@
        Mon objectif de carrière et d'être intégré à une structure opérationnelle, 
        où la capacité de réalisation est appréciée. 
    </div>
-   <div class="content step" data-scale=10 data-x="0" data-y="0" >
+   <div class="content step " data-scale=10 data-x="0" data-y="0" >
        <h1 class=big >Expériences</h1>
     </div>
 
@@ -91,7 +91,7 @@
            </tr>
        </table>
    </div>
-   <div  class="step content" data-scale=.1 data-x="-3000" data-y="500" data-rotate=20 data-scale=.1 >
+   <div  class="step  content slide" data-scale=.1 data-x="-3000" data-y="500" data-rotate=20 data-scale=.1 >
        <h2 class=intitule>2010 Cellfish Media</h2>
        Lead Développeur sur la partie facturation du paiement mobile en ligne 
        en collaboration avec les TelCo. La
@@ -415,12 +415,43 @@ if ("ontouchstart" in document.documentElement) {
     Of course you can wrap it in any kind of "DOM ready" event, but I was too lazy to do so ;)
     
 -->
+<script src="js/impress.js"></script>
 <script src="js/jquery-1.8.2.js"></script>
 <script src="js/jquery-ui.js"></script>
-<script src="js/impress.js"></script>
 <script>
 
 $(document).ready(function() { 
+window.onresize=function() {
+    $('.step').each(function()
+    {
+        var width  = $(this).width();
+        var height = $(this).height();
+        var parentWidth  = $(this).parent().width();
+        var parentHeight = $(this).parent().height();
+        console.log(this);
+
+        if(width/parentWidth < height/parentHeight)
+        {
+            newWidth  = parentWidth;
+            newHeight = newWidth/width*height;
+        }
+        else
+        {
+            newHeight = parentHeight;
+            newWidth  = newHeight/height*width;
+        }
+        margin_top  = (parentHeight - newHeight) / 2;
+        margin_left = (parentWidth  - newWidth ) / 2;
+        mtop=int( parentHeight/2);
+
+        $(this).css({'margin-bottom'   : -margin_top + 'px',
+
+                   'margin-left':'auto',
+                   'margin-right':'auto',
+                     'height'     :newHeight   + 'px',
+                     'width'      :newWidth    + 'px'});
+    });
+}
 $(".button").button();
 cv=$('#printable').html();
 $(".content").each(function(i,el) { cv+=$(el).html() });
@@ -439,11 +470,12 @@ $('#jcprt').click( function() {
 });
 $(".button").click(function() {
     $("#printable").fadeOut();
-    impress().init();
-    $('#impress').fadeIn();
-    impress().goto("init");
     $("body").css("overflow","hidden");
     $("body").css("position","relative");
+    $('#impress').fadeIn();
+    impress().init();
+    impress().goto("init");
+/*    window.onresize();*/
 });
 if ( "printable" == window.location.hash || ! window.location.hash ) { 
     $('#jcprt').click();
@@ -451,7 +483,6 @@ if ( "printable" == window.location.hash || ! window.location.hash ) {
     impress().init();
     impress().goto(window.location.hash);
 }
-
 });
 </script>
 
