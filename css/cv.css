@@ -23,7 +23,6 @@
     max-width:39em;
        text-shadow: -1px -2px -2px rgba(100,100,100,.7);
 }
-}
 table {
     font-size:80%;
     margin-top:1em;
@@ -34,11 +33,28 @@ table {
     font-size:110%;
     font-family: 'PT Serif', georgia, serif;
     margin-bottom:1em;
-    background-color: #CCC;
-    border-radius: 0.2em;
-    -moz-border-radius: 3px;
+    /*background-color: #CCC;*/
+    /*border-radius: 0.2em;*/
+    /*-moz-border-radius: 3px;*/
+
     display:block;
 
+}
+#printable { 
+    min-height:800px;
+    max-width:50em;
+    line-height:1.4;
+    font-size:15px;
+    display:block;
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+
+    margin-top:1.2cm;
+    margin-bottom:1.2cm;
+
+
+}
 }
 td.field {
 width:30%;
@@ -59,23 +75,6 @@ td.is {
 border:0px;
        border-left: 1px solid black;
 }
-#printable { 
-    min-height:800px;
-    max-width:50em;
-    line-height:1.4;
-    font-size:15px;
-    display:block;
-    position:relative;
-    left:auto;
-    right:auto;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:1.2cm;
-    margin-bottom:1.2cm;
-
-
-}
-
 #printable h1 {
     font-size:110%;
 }
@@ -85,10 +84,26 @@ border:0px;
 .decal { margin-left:5em}
 @media print { 
     .decal { top:1cm; margin-left:0em; }
-    #printable { position:relative; top:-3cm; max-width:50em; margin:2cm; }
+    #printable {
+    position:absolute;
+      font-size:10pt;
+        margin:1cm 2cm 1cm 2cm;
+        padding:0 auto;
+
+        float:none !important;
+        
+        
+        }
+    a,a:visited { color:#333; }
+    .hint { visibility: hidden; }
     .hidden { visibility: hidden; }
     .button { visibility:hidden; height:0px; display:none;}
-    #printable h1,h2 { background-color: white; border-bottom:1mm solid black; }
+    #printable h1,h2 {
+        background-color:none ;border:0; border-bottom:.5mm solid black; }
     #impress { visibility: hidden; }
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
 }
 

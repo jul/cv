@@ -13,8 +13,8 @@
 
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
 
-    <link href="css/impress-demo.css" rel="stylesheet" />
-    <link href="css/jquery-ui.css" rel="stylesheet" />
+    <link href="css/impress-demo.css" media=screen rel="stylesheet" />
+    <link href="css/jquery-ui.css" media=screen rel="stylesheet" />
     <link href="css/cv.css" rel="stylesheet" />
     <link rel="shortcut icon" href="favicon.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -49,8 +49,10 @@
 
        <div  class="content step" data-rotate=10  data-scale=.2 data-x="-3500" data-y="500" data-z=0 >
        <h1 class=intitule><b>2011</b> MassMotionMedia Publicité en ligne en format Riche</h1>
+       <p>
        En tant que développeur senior, j'ai participé à l'élaboration de différents
        produits basés sur des technologies python :
+       </p>
        <ul>
            <li>une solution de Web vidéo multi CDN;</li>
            <li>un proxy modifiant pour insérer dynamiquement des annonces sur des sites;</li>
@@ -91,12 +93,14 @@
            </tr>
        </table>
    </div>
-   <div  class="step  content slide" data-scale=.1 data-x="-3000" data-y="500" data-rotate=20 data-scale=.1 >
-       <h2 class=intitule>2010 Cellfish Media</h2>
+   <div  class="step  content " data-scale=.1 data-x="-3000" data-y="500" data-rotate=20 data-scale=.1 >
+       <h1 class=intitule>2010 Cellfish Media</h1>
+       <p>
        Lead Développeur sur la partie facturation du paiement mobile en ligne 
        en collaboration avec les TelCo. La
        mission consitait à développer, suivre les chantiers,
        encadrer les nouveaux arrivants. 
+       </p>
        <table >
            <tr >
               <td class=field >
@@ -135,11 +139,13 @@
    <div  class="step content" data-rotate=30 data-scale=.1 
    data-x="-2500" data-y="500" >
 
-   <h2 class=intitule>2005 - 2010 Freelance</h2>
+   <h1 class=intitule>2005 - 2010 Freelance</h1>
+   <p>
    5 années pour satisfaire ma curiosité pour tous les
    métiers clients et technologies existantes.<br/>
    Les TelCo et ainsi que les web agency ont été mes grandes expériences.
    J'ai surtout travailler en technologie Web.
+   </p>
     <table>
        <tr >
           <td class=field >
@@ -180,13 +186,15 @@
    </div>
    <div  class="step content" data-rotate=40 data-scale=.1 
    data-x="-2000"  data-y="500" >
-   <h2 class=intitule>2002 - 2005 Telco</h2>
+   <h1 class=intitule>2002 - 2005 Telco</h1>
+   <p>
    Deux grandes expériences: LDCOM networks, et FTC/orange télévision.<br/>
    Pour LDCOM gestion de la communicaion avec le RIPE pour les allocations d'IPv4, 
    développement de sondes de mesure en Net::Telnet sur les équipements.<br/>
    Pour FTC, participation à la mise en place du backbone (DNS, Mail, DHCPd configuration 
    et documentation de mise en œuvre), ainsi que d'outil d'approvisonnement, et de suivi
    client (Request Tracker), création d'un patch DHCP leasequery.<br/>
+   </p>
     <table>
        <tr >
           <td class=field >
@@ -216,13 +224,14 @@
    </table>
    </div>
    <div  class="step content" data-rotate-z=50 data-scale=.1 
-  
    data-x="-1500" data-y="500" >
-   <h2 class=intitule>1999 - 2002 Société de Service en Logiciel Libre </h2>
+   <h1 class=intitule>1999 - 2002 Société de Service en Logiciel Libre </h1>
+   <p>
    Open care, Easter-eggs, Alcôve ont été mes 3 premières société pour lesquelles j'ai travaillé.<br/>
    Pionnières dans le domaines, elles ont affronté le réalisme nécessaire à la mise eu œuvre du 
    libre dans le monde professionnelle.<br/>
    Plus: le développement d'un driver multi head CL5480 pour linux.
+   </p>
 
     <table>
        <tr >
@@ -332,14 +341,14 @@
    <div class="step" data-scale=5 data-x="-20000" data-y="2000" 
   data-rotate=-90 >
       <a href=http://beauty-of-imagination.blogspot.fr/2012/06/color-of-music-why-not-discover-pythons.html >Spectrosonogramme avec matplotlib</a><br/>
-      <img width=1200px src=img/sono.png  />
+      <img  src=img/sono.png  />
     </div>
    <div class="step" data-scale=5 data-x="-20000" data-y="-4000" 
   data-rotate=-90 >
       <a href=http://wwwstat.julbox.fr >Fréquentation de site web</a><br/>
       <br/>
       utilise <a href=https://github.com/jul/yahi>yahi</a> et flask<br/>
-      <img src=img/wwwstat.png width=1200px />
+      <img src=img/wwwstat.png  />
     </div>
    <div class="step" data-scale=4 data-x="-16000" data-y="-6000" 
   data-rotate=-90 >
@@ -355,7 +364,7 @@
 <center><a href=#init class=button >
 version  interactive
 </a></center><br/>
-<div class=decal2 >Julien Tayon<br/>
+<div >Julien Tayon<br/>
 <a href=mailto:julien@tayon.net >Julien@tayon.net</a><br/>
 <a href=http://github.com/jul >github.com/jul</a><br/>
 Tel: 514 999 7453
@@ -395,7 +404,6 @@ var class_saver=[];
     $(".content").each(function(i,el) { cv+=$(el).html() });
     $('#printable').html(cv);
    
-alert($("#impress").html().length < 1000 );
 $('#jcprt').click( function() { 
     window.location.hash = 'printable';
     class_saver=$("body").attr("class");
