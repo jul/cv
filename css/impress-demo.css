@@ -667,7 +667,7 @@ a:hover, a:focus {
     So use it wisely ... or don't use at all.
 */
 .impress-enabled          { pointer-events: none }
-.impress-enabled #impress { pointer-events: auto;display:none }
+.impress-enabled #impress { pointer-events: auto; }
 
 /*
     There is one funny thing I just realized.
