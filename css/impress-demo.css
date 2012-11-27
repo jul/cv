@@ -567,7 +567,7 @@ a:hover, a:focus {
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 200px;
+    bottom: 0px;
     
     background: rgba(0,0,0,0.5);
     color: #EEE;

@@ -21,6 +21,7 @@
 </head>
 
 <body class="impress-not-supported">
+<div class=loading ><img src=img/loading.gif /> </div>
 <div class="fallback-message">
     <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
     <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
@@ -361,7 +362,7 @@
 
 </div>
 <div id=printable >
-<center><a href=#init class=button >
+<center><a href="#/init" class=button >
 version  interactive
 </a></center><br/>
 <div >Julien Tayon<br/>
@@ -395,18 +396,20 @@ Tel: 514 999 7453
 <script src="js/jquery-1.8.2.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script>
-
-$(document).ready(function() { 
-impress().init();
 var class_saver=[];
-//$('.button').button();
-    cv=$('#printable').html();
-    $(".content").each(function(i,el) { cv+=$(el).html() });
-    $('#printable').html(cv);
-   
-$('#jcprt').click( function() { 
+
+function reveal_impress() { 
+    $('#printable').hide();
+    impress().goto(window.location.hash);
+    impress().init();
+  /*  class_saver=$("body").attr("class");
+    $("body").attr("class",class_saver);*/
+    $('#impress').show();
+    $("body").css("overflow", "hidden");
+};
+function reveal_cv() { 
     window.location.hash = 'printable';
-    class_saver=$("body").attr("class");
+    /*class_saver=$("body").attr("class");*/
     $("body").removeAttr("class");
     $("#impress").hide();
     $("#printable").fadeIn();
@@ -414,28 +417,39 @@ $('#jcprt').click( function() {
     $('#printable').zIndex=90000;
     $('body').zIndex=0;
     $("body").css("overflow", "auto");
-
-});
-
-$('.button').click(function() {
-    window.location.hash = 'init';
-    $('#printable').fadeOut({ 'speed' : "slow"});
-
-
-    
-    $('#impress').fadeIn({ 'speed': "slow"});
-    $("body").attr("class",class_saver);
-    impress().goto("init");
-    $("body").css("overflow", "hidden");
-});
+}
+function select_view() { 
+console.log(window.location.hash);
 if (window.location.hash.indexOf("printable")!= -1){
-    $('#jcprt').click();
+    reveal_cv();
 } else { 
-    $('#printable').hide();
-    impress().init();
-    impress().goto(window.location.hash);
+    $("body").attr("class",class_saver);
+impress().init();
+if(window.location.hash.indexOf("init") != -1 || ! window.location.hash){
+    $(".hint").show();
+} else { 
+    $(".hint").hide();
+}
+$(".fallback-message").hide();
+   
+    reveal_impress();
+ /*   $('#printable').hide();
+    impress().goto(window.location.hash);*/
     class_saver=$("body").attr("class");
 }
+};
+$(document).ready(function() { 
+    $(".loading").hide();
+    cv=$('#printable').html();
+    $(".content").each(function(i,el) { cv+=$(el).html() });
+    $('#printable').html(cv);
+   
+$('#jcprt').click =reveal_cv;
+
+
+window.onhashchange = select_view;
+select_view();
+
 });
 </script>
 
