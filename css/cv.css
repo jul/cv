@@ -104,7 +104,9 @@ a,a:visited { color:#333; }
 .hidden { display:none; }
 .button { display:none; height:0px; display:none;}
 #printable h1,h2 {
-    background-color:none ;border:0; border-bottom:.5mm solid black; }
+    background-color:white ;
+    border:0; 
+    /*border-bottom:1mm solid black; */}
 #impress { display:none; }
     table {
         border-collapse: collapse;
