@@ -1,4 +1,5 @@
 
+
 .big {
     font-size:160%;
     font-family: 'PT Serif', georgia, serif;
@@ -63,6 +64,12 @@ position:relative;
     line-height:1.2;
 }
 .decal { margin-left:5em}
+}
+h3 {
+    border-bottom: 1px solid black;
+    font-size:110%;
+    font-style:italic;
+    margin-top:.3em;
 }
 td.field {
 width:30%;
