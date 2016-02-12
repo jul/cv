@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 @media: screen
+=======
+>>>>>>> gh-pages
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -142,8 +145,16 @@ a:hover, a:focus {
 
 .step {
     position: relative;
+<<<<<<< HEAD
     max-width:50em;
     min-width:40em;
+=======
+/*    display:block;*/
+    max-width:50em;
+    min-width:35em;
+   /* width: 900px;
+    height: 700px;*/
+>>>>>>> gh-pages
     padding: 40px;
     margin: 20px auto;
 
@@ -154,10 +165,18 @@ a:hover, a:focus {
     box-sizing:         border-box;
 
     font-family: 'PT Serif', georgia, serif;
+<<<<<<< HEAD
     font-size: 48px;
     line-height: 1.5;
 }
 
+=======
+    /*font-size: 48px;*/
+    font-size:1.5em;
+    line-height: 1.5;
+}
+#impress { display:none; } 
+>>>>>>> gh-pages
 /*
     ... and we enhance the styles for impress.js.
     
@@ -165,7 +184,11 @@ a:hover, a:focus {
 */
 .impress-enabled .step {
     margin: 0;
+<<<<<<< HEAD
     opacity: 0.3;
+=======
+    opacity: 0.2;
+>>>>>>> gh-pages
 
     -webkit-transition: opacity 1s;
     -moz-transition:    opacity 1s;
@@ -184,6 +207,22 @@ a:hover, a:focus {
     
     They cover everything what you see on first three steps of the demo.
 */
+<<<<<<< HEAD
+=======
+
+.boxed {
+    display: block;
+
+    width: 900px;
+    height: 700px;
+    padding: 40px 60px;
+
+    color: rgb(102, 102, 102);
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: -1px;
+}
+>>>>>>> gh-pages
 .slide {
     display: block;
 
@@ -204,7 +243,10 @@ a:hover, a:focus {
     line-height: 36px;
     letter-spacing: -1px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> gh-pages
 .slide q {
     display: block;
     font-size: 50px;
@@ -265,7 +307,11 @@ a:hover, a:focus {
     
     Let's move to 'big thoughts' with centered text and custom font sizes.
 */
+<<<<<<< HEAD
 #big {
+=======
+.big {
+>>>>>>> gh-pages
     width: 600px;
     text-align: center;
     font-size: 60px;
@@ -552,7 +598,11 @@ a:hover, a:focus {
     position: fixed;
     left: 0;
     right: 0;
+<<<<<<< HEAD
     bottom: 200px;
+=======
+    bottom: 0px;
+>>>>>>> gh-pages
     
     background: rgba(0,0,0,0.5);
     color: #EEE;
@@ -602,7 +652,11 @@ a:hover, a:focus {
 /*
     ... and we will show it when the first step (with id 'bored') is active.
 */
+<<<<<<< HEAD
 .impress-on-bored .hint {
+=======
+.impress-on-init .hint {
+>>>>>>> gh-pages
     /*
         We remove the transparency and position the hint in its default fixed
         position.
@@ -652,7 +706,11 @@ a:hover, a:focus {
     So use it wisely ... or don't use at all.
 */
 .impress-enabled          { pointer-events: none }
+<<<<<<< HEAD
 .impress-enabled #impress { pointer-events: auto }
+=======
+.impress-enabled #impress { pointer-events: auto; }
+>>>>>>> gh-pages
 
 /*
     There is one funny thing I just realized.
