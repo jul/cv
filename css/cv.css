@@ -1,33 +1,3 @@
-<<<<<<< HEAD
-.content p,div, h2,h3,table,tr {
-   /*margin-left:auto;
-    margin-right:auto;
-    min-width:40em;
-    line-height:1.1;
-    max-width:50em;
-    */
-
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-size:90%;
-
-/*    max-width:50em;*/
-}
-.big  {
-    font-size:200%;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:.5em;
-    margin-bottom:.5em;
-    font-family: 'Open Sans', Arial, sans-serif;
-    max-width:39em;
-       text-shadow: -1px -2px -2px rgba(100,100,100,.7);
-}
-table {
-    font-size:80%;
-    margin-top:1em;
-    margin-bottom:1em;
-    width:90%;
-=======
 
 
 .big {
@@ -36,7 +6,6 @@ table {
     margin-bottom:1em;
     display:block;
 
->>>>>>> gh-pages
 }
 .intitule{
     font-size:110%;
@@ -48,8 +17,6 @@ table {
     display:block;
 
 }
-<<<<<<< HEAD
-=======
 .content p,div, h1, h2,h3,table,tr {
     /*margin-left:auto;
       margin-right:auto;
@@ -104,7 +71,6 @@ h3 {
     font-style:italic;
     margin-top:.3em;
 }
->>>>>>> gh-pages
 td.field {
 width:30%;
       text-align:right;
@@ -114,48 +80,15 @@ color: #666;
        padding-right:.5em;
        font-weight:bold;
        font-style:italic;
-<<<<<<< HEAD
-       text-shadow: -1px -2px -2px rgba(100,100,100,.7);
-
-
-}
-=======
 }
 
 
->>>>>>> gh-pages
 td.is {
     padding-left:.5em;
     text-align:left;
 border:0px;
        border-left: 1px solid black;
 }
-<<<<<<< HEAD
-#printable { 
-    min-height:800px;
-    max-width:70em;
-    line-height:1.2;
-    display:none ;
-    font-size:15px;
-    position:block;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:1.2cm;
-    margin-bottom:1.2cm;
-
-
-}
-
-#printable h1 {
-    font-size:110%;
-}
-#printable h1 {
-    line-height:1.2;
-}
-@media print { 
-    .button { visibility: hidden; }
-    #impress { visibility: hidden; }
-=======
     table {
         font-size:80%;
         margin-top:1em;
@@ -187,6 +120,5 @@ a,a:visited { color:#333; }
         border-spacing: 0;
 
     }
->>>>>>> gh-pages
 }
 
