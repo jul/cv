@@ -1,0 +1,620 @@
+<!doctype html>
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Linear algebra is just evoluted duck typing</title>
+
+    <meta name="author" content="Julien Tayon"/>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+
+    <link href="css/pres.css" rel="stylesheet" />
+    <link href="css/jquery-ui.css" media=screen rel="stylesheet" />
+    <link href="css/cv.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  </head>
+
+  <body class="impress-not-supported">
+    <div class=loading ><img src=img/loading.gif /> </div>
+    <div class="fallback-message">
+      <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+      <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+    </div>
+    <div id="impress">
+      <div id="init" style="line-height:2em;" class="step" data-scale=3 data-x="2500" data-y="-500" >
+        The power of duck typing and linear algrebra
+        <ul>
+          <li><a  href="#CVinter">I wanna puke visualisation</a></li>
+          <li><a id=jcprt href="#printable">Printable one</a></li>
+        </ul>
+      </div>
+      <div id="CVinter" class="content step " data-scale=1 data-x="1500" data-y="00" data-rotate=45  >
+        <h1 class=big >Linear algebra 101:</h1>
+        <p>
+        If you behave nicely and consistently you have super cow powers including
+        <ul>
+          <li>metrics
+          </li>
+          <li>distributive systems, paralellism
+          </li>
+          <li>least surprises
+          </li>
+        </ul>
+      </div>
+      <div class="content step " data-scale=2 data-x="1000" data-y="1000" data-rotate=90 >
+	<h1 class=big >Part1: The magic of algebra</h1>
+	  It's all about behaviours<br/>
+	  Legal discolusure: My linear algebra books is the french version of<br/>
+	  <a href=http://www.goodreads.com/book/show/205506.Schaum_s_Outline_of_Linear_Algebra>
+	    Lipschutz Linear Algebra (Shaum edition)</a>
+      </div>
+      <div  class="content step"   data-scale=1.5 data-x="-000" data-y="5000"  >
+	<h1 class=big><b>Theorem 1: given simple enough rules you can make TDD</b></h1>
+	Linear algebra definition is basically if you pass the tests, then you have super powers.
+	<img src=img/theorem1.png >
+	Nota Bene:
+	<ul>
+	  <li>
+	    1 is NOT 1, and so 0 is not 0. They are symbol that does the job</li>
+	  <li>Computer int are no integer, floats are not real numbers, and all is lies</li>
+	  <li>Good enough lies worth a good enough truth</li>
+	</ul>
+
+      </div>
+
+      <div  class="content step"   data-scale=1.2 data-x="-000" data-y="4000"  >
+	<h1 class=big>Writing you own test frameworks</h1>
+	<p>
+	Let's implement them:<br/>
+	<a href=https://github.com/jul/ADictAdd_iction/blob/master/vector_dict/ConsistentAlgebrae.py#L168-L198 >
+	  Consistent Algebra test</a>
+	<img src=img/screenal1.png />
+	</p>
+      </div>
+
+      <div  class="step content"  data-scale=.8 data-x="2000" data-y="2000" 
+	      >
+       <h1 class=big>Which makes you curious of what is compliant by default</h1>
+       (yes I purposefully did not went on edge cases)
+
+       <pre style='font-size:60%'>
+**************************************************
+testing for  'complex' class
+ a = (1+0j)
+ b = (1+1j)
+ c = (1-4j)
+ an_int = 2 
+ other_scalar = 3 
+ neutral element for addition is 0j 
+
+**************************************************
+       </pre>
+       <pre id=spoiled 
+	      style='font-size:10%' 
+      >
+test #1
+ a + b = b + a 
+'test_commutativity' is 'ok'
+
+test #2
+ a + neutral = a 
+'test_neutral' is 'ok'
+
+test #3
+ 1 * a = a 
+'test_multiplicative_identity' is 'ok'
+
+test #4
+ an_int * a = a + ... + a (n times ) 
+'test_scalar_multiplication' is 'ok'
+
+test #5
+ an_int * a = a * an_int 
+'test_scalar_commutativity' is 'ok'
+
+test #6
+ -a = -1 * a 
+'test_negative' is 'ok'
+
+test #7
+ ( an_int *  other_scalar ) * a = an_int ( other_scalar * a )
+'test_associativity_scalar_multiplication' is 'ok'
+
+test #8
+ ( an_int + other_scalar ) a = an_int * a  + other_scalar * a 
+'test_multiply_scalar_associativity' is 'ok'
+
+test #9
+ a * other_scalar = other_scalar * a 
+'test_multiply_scalar_symmetric' is 'ok'
+
+test #10
+( a + b )  + c  = a + ( b + c )
+'test_associativity' is 'ok'
+
+test #11
+ a - b = a + ( -1 * b) 
+'test_substraction' is 'ok'
+
+test #12
+ an_int ( a + b) = an_int *a + an_int * b 
+'test_distributivity' is 'ok'
+
+test #13
+ a  / 2  = .5 * a
+'test_fraction_consisentcy' is 'ok'
+
+test #14
+ a * n  / 2  = a + ... + a n /2 times (n beign odd)
+'test_div_consisentcy' is 'ok'
+       </pre>
+       <pre style='font-size:60%'>
+**************************************************
+
+14/14
+&lt;type 'complex'&gt; respects the linear algebrae standard rules 
+
+**************************************************
+       </pre>
+
+	</div>
+
+	<div  class="content step"   data-scale=1.1 data-x="-000" data-y="3000"  >
+	  <h1 class=intitule><b>Just for fun what default type can be considered scalars? </b></h1>
+	  <center>
+	  <table class=res>
+	    <thead>
+	      <tr>
+		<th>Type</th>
+		<th>Neutral of add.</th>
+		<th>Neutral of mul.</th>
+		<th>Result</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+		<td>
+		  Numpy array
+		</td>
+		<td>
+		  zeroes(dim)
+		</td>
+		<td>
+		  ones(dim)
+		</td>
+		<td class=cok >
+		  OK
+		</td>
+	      </tr>
+	      <tr>
+		<td>
+		  floats
+		</td>
+		<td>
+		  0.0
+		</td>
+		<td>
+		  1.0
+		</td>
+		<td class=cok >
+		  OK
+		</td>
+	      </tr>
+	      <tr>
+		<td>
+		  int
+		</td>
+		<td>
+		  0	
+		</td>
+		<td>
+		  1
+		</td>
+		<td class=cok >
+		  OK
+		</td>
+	      </tr>
+	      <tr>
+		<td>
+		  Decimal
+		</td>
+		<td>
+		  Decimal(0.000000)
+		</td>
+		<td>
+		  Decimal(1.000000)
+		</td>
+		<td class=cko >
+		  KO
+		</td>
+	      </tr>
+	      <tr>
+		<td>
+		  complex
+		</td>
+		<td>
+		  0+0j
+		</td>
+		<td>
+		  1+0j
+		</td>
+		<td class=cok >
+		  OK
+		</td>
+	      </tr>
+	      <tr>
+		<td>
+		  list
+		</td>
+		<td>
+		  [ ]
+		</td>
+		<td>
+		  1
+		</td>
+		<td class=cko >
+		  KO
+		</td>
+	      </tr>
+
+	    </tbody>
+	  </table>
+	  </center>
+	  You can also test strings, quaternions....
+
+	</div>
+	<div  class="content step"   data-scale=1 data-x="000" data-y="2000"  >
+	  <h1 class=intitule><b>Math books also gives you the Cook book</b></h1>
+	  <img src=img/somprod_vect.png />
+	</div>
+	<div  class="step content" data-scale=.6
+       data-x="3000"  data-y="2000" >
+       <h1 class=intitule><b>So I don't need to justify my choices, I just need to code</b></h1>
+       <p>
+		 Any implementations that passes the tests is a good enough implementation \o/<br/>
+		 Arbitrary choices:
+<ul>
+<li>
+	I overload
+<br> + (__add__, __radd__, __iadd__) <br>
+<br> - (__sub__, __rsub__, __isub__) <br>
+<br> * (__mul__, __rmul__, __imul__) <br>
+<br> / (__div__, __rdiv__, __idiv__) <br>
+to propagate anything that is a scalar to a leaf and just rely on the existence of these methods on the "leaves" / sclar
+</li>
+<li>
+	and if a left and right mutable mapping <i>aka dict</i>, I propagate as long as both left/right operantd match key path to a leaf
+</li>
+</ul>
+Abstract base class (<i>type</i>) and duck typing (using the <i>operator</i>) are the only 2 tricks used.
+<br/>
+The exact same trick can probably implemented with C++ STL, in ruby, Perl, PHP.
+       </p>
+</div>
+	    <div class="content step" data-scale=5 data-x="1000" data-y="-6000" 
+						  data-rotate=-65 >
+						  <h1 class=big>And? Does it seems to pass tests?</h1>
+At least for the simple case...
+<pre class=vi>
+**************************************************
+
+testing for  <span class=LIdentifier>'Daikyu'</span> class
+
+ a = {'one_and_two': 3, 'one': 1}
+ b = {'two': 2, 'one_and_two': -1}
+ c = {'one': 3, 'three': 1, 'two': 2}
+ an_int = 2 
+ other_scalar = 3 
+ neutral element for addition is {} 
+
+**************************************************
+... 16 tests later ...
+**************************************************
+
+16/16
+<class 'archery.bow.Daikyu'> respects the linear algebrae standard rules 
+
+**************************************************
+</pre>
+	    </div>
+	<div  class="step  content " data-scale=.9 data-x="1500" data-y="2000"   >
+        <h1 class=big><b>Let's watch the behaviour of more complex data</b></h1>
+        <pre class=vi>
+<span class=PreProc>from</span> archery <span class=PreProc>import</span> mdict #multiplicative dict
+
+<span class=Statement>class</span> <span class=LIdentifier><span class=LIdentifier>Tset</span></span>(<span class=Identifier>set</span>): <span class=Statement>pass</span>
+
+<span class=LIdentifier><span class=LIdentifier>Tset</span></span>.__add__ = <span class=Identifier>set</span>.__or__
+
+<span class=LIdentifier>mdict</span>(a=[1, ], b='a', c=<span class=Identifier>complex</span>(0,1))
+<span class=Comment>#Out[13]: {'a': [1], 'b': 'a', 'c': 1j}</span>
+
+<span class=LIdentifier>mdict</span>(a=[1, ], b='a', c=<span class=Identifier>complex</span>(0,1)) *2
+<span class=Comment>#Out[14]: {'a': [1, 1], 'b': 'aa', 'c': 2j}</span>
+
+<span class=LIdentifier>mdict</span>(a=[1, ], b='a', c=<span class=Identifier>complex</span>(0,1), d=<span class=LIdentifier>Tset</span>('abc'))
+<span class=Comment>#Out[15]: {'a': [1], 'b': 'a', 'c': 1j, 'd': {'a', 'b', 'c'}}</span>
+
+<span class=LIdentifier>mdict</span>(a=[1, ], b='a', c=<span class=Identifier>complex</span>(0,1), d=<span class=LIdentifier>Tset</span>('abc')) + mdict(d=<span class=LIdentifier>Tset</span>('efa'))
+<span class=Comment>#Out[16]: {'a': [1], 'b': 'a', 'c': 1j, 'd': {'a', 'b', 'c', 'e', 'f'}}</span>
+
+<span class=LIdentifier>mdict</span>(a=[1, ], b='a', c=<span class=Identifier>complex</span>(0,1) ) * 2
+<span class=Comment>#Out[17]: {'a': [1, 1], 'b': 'aa', 'c': 2j}</span>
+
+<span class=Identifier><span class=Identifier>complex</span></span>(0,1) * (<span class=LIdentifier>mdict</span>(x=.1, y=2) * <span class=LIdentifier>mdict</span>(x=2,y=3, z=4) + <span class=LIdentifier>mdict</span>(a = <span class=LIdentifier>mdict</span>(c=2)))
+<span class=Comment># {'a': {'c': 2j}, 'x': 0.2j, 'y': 6j}</span>
+
+        </pre>
+Well, so far, it seems consistent and usable. <br/>
+After all, with named regexp every record is a dict, and all dict can be added to bigger dicts.
+	</div>
+	<div  class="step  content " data-scale=.9 data-x="1500" data-y="6000"   >
+<h1 class=big>Use case?</h1>
+
+A use case of this is log parsing (cf <a href=https://github.com/jul/yahi>yahi on github</a>).<br/>
+Or simply pypi-stats<br/>Better known as pypi-ranking (for which I am not credited, bouhouh)<br>
+
+
+</div>
+    <div class="step content" data-scale=1   data-x="1500" data-y="2500"  >
+        <h1 class=big>But does it have the promised mathematics behaviour?</h1>
+        Let's check.<br/>
+        Can we mathematically expose an API that following the least surprise principle:
+        <ul>
+            <li>for computers? (checked)</li>
+            <li>for coders? (it works for me)</li>
+            <li>actual mathematical use? (...)</li>
+        </ul>
+       
+        
+</div>
+	<div  class="step  content " data-scale=.9 data-x="1500" data-y="3000"   >
+	  <h1 class=big><b>Let's make a simple observation</b></h1>
+	  <p>
+		On a dict (shortcut for MutableMapping) anything that is not a leaf is a part of a key.<br/>
+		But let's turn<br>
+		<code>{ 'a': { 'b' : 1 }, 'b' : 2}</code>
+		AS<br>
+		<code> { ('a', 'b') : 1; 'b': 2 }</code><br>
+		All keys are immutable. So the tuple of the keys is also...immutable.<br/> 
+		Hence:
+		<p class=exergue>Every distinct immutables path to a value are a key, and 
+		then we can reduce a recursive problem to a 1 level problem.<br/>
+		All dicts are utimately possibly put in a canonical one level form.<br/>
+		Every distinct immutable are called a distinct dimension.<br/>
+        We have an isomorphism between the one level Mapping and arbitrary depth Mappings.
+		</p>
+		<br>
+        Nice, then, since the problem is easy, let's implement <b>cosinus</b> and <b>dot product</b>.
+	
+	  </p>
+	</div>
+	
+	<div class="content step" data-scale=3 data-x="-2000" data-y="000" 
+							data-rotate=-90 >
+		<h1 class=big >First let's turn the axiom in a usable function</h1>
+		<pre class=vi>
+<span class="PreProc">from</span> collections <span class="PreProc">import</span> MutableMapping
+
+MARKER=<span class="Identifier">object</span>()
+
+<span class="Statement">def</span> <span class="LIdentifier">paired_row_iter</span>(tree, path=MARKER):
+    <span class="Statement">if</span> path <span class="Statement">is</span> MARKER:
+        path = <span class="Identifier">tuple</span>()
+
+    <span class="Statement">for</span> k, v <span class="Statement">in</span> tree.iteritems():
+        <span class="Statement">if</span> <span class="Identifier">isinstance</span>(v, MutableMapping) <span class="Statement">and</span> <span class="Identifier">len</span>(v):
+            <span class="Statement">for</span> child <span class="Statement">in</span> <span class=LIdentifier >paired_row_iter</span>(v, path + (k,)):
+                <span class="Statement">yield</span> child
+        <span class="Statement">else</span>:
+            <span class="Statement">yield</span> ((path + (k,)) , v)
+
+<span class=Identifier >dict</span>(<span class=LIdentifier >paired_row_iter</span>({ 'a' : { 'b' :1},  'c':2, 'd' : {'e': []}, 'e': {} }) )
+<span class=Comment># {('a', 'b'): 1, ('c',): 2, ('d', 'e'): [], ('e',): {}}</span>
+
+</pre>
+
+
+
+
+	</div>
+	  <div class="content step" data-scale=2
+	data-rotate=-90 data-x="-2000" data-y="-2000">
+            <h1>let's read the specs</h1>
+            <img src=./img/dot_prod.png />
+	</div>
+	  <div class="content step" data-scale=2
+	data-rotate=-90 data-x="-2500" data-y="-2000">
+            <h1 class=big>Let's implelement them</h1>
+NB: algebra books don't specify abs but, being a purist, I want <i>u</i>.<i>u</i> to be
+<ul>
+<li>defined</li>
+<li>normed</li>
+<li>positive</li>
+</ul>
+to fit with the Lesbegue measure. Even, if scalars are <span class=Identifier>complex</span>
+            <pre class=vi>
+dot = lambda u,v: sum(abs(v) for i,v in paired_row_iter(u*v))
+
+dot(mdict(x=1,y=1, z=1), mdict(x=1, y=1, z=1)
+# 3
+dot(mdict(x=1,), mdict( y=1, z=1)
+# 0
+</pre>
+Which is what math expects. 
+<br>
+</div>
+
+	  <div class="content step" data-scale=2
+	data-rotate=-90 data-x="-2500" data-y="-2000">
+<h1 class=big>So let's implement the rest of the specs</h1>
+<img src=img/distance.png />
+Now we can define <i>abs</i> (which is a mathemtic shortcut for L2 distance/norm) and distance as 
+<pre class=vi>
+vabs = lambda v: dot(v,v)**.5
+distance = lambda u, v: vabs(u-v)
+</pre>
+</div>
+
+<div>
+	  <div class="content step" data-scale=2
+	data-rotate=-90 data-x="-5000" data-y="2000">
+        <h1 class=big>Which leaves us with ... the cosinus</h1>
+        <img src=img/cos.png />
+<pre class=vi>
+vcos = lambda u,v : dot(u,v) / vabs(u) / vabs(v)
+
+vcos(mdict(x=1, y=1), mdict(x=1, y=0))
+<span class=Comment># Out[27]: 0.7071067811865475</span>
+
+2**.5/2
+<span class=Comment># Out[29]: 0.7071067811865476 (cos(45°)</span>
+
+vcos(mdict(x=1, ), mdict(x=2, y=4, z=4, v=4))
+<span class=Comment># Out[30]: 0.3333333333333333  (cos 60°)</span>
+
+vcos(mdict(x=1), mdict())
+<span class=Comment style='color:red'># ZeroDivisionError: float division by zero</span>
+</pre>
+So far so good.<br/>
+<p class=exergue>
+We have something that is built for infinite intricated dimensions, and
+that already works for the 2D &amp; 3D euclidean space without even trying.<br/>
+<a href=http://math.stackexchange.com/a/932454>And we even have a meaningful exception: cos with a null vector does not mean a thing.</a>
+
+</p>
+
+</div>
+<div>
+
+
+	    <ul><li>
+		<a  href=http://github.com/jul>Github.com/jul</a> <br/>
+		Contient les sources de mes projets en python et javascript
+	      </li>
+	      <li>
+		<a href="http://pypi.python.org/pypi?%3Aaction=search&term=julien+tayon&submit=search">Mes paquets sur pypi</a><br/>
+		Paquets maintenus et packagés sur pypi
+	      </li>
+	    </ul>
+	  </div>
+
+	  <div id=portfolio class="step" data-scale=10 data-x="1000" data-y="-2000" 
+							      data-rotate=-45 >
+							      <h1 class=big >Projets fun</h1>
+	  </div>
+	      <div class="step" data-scale=2 data-x="3500" data-y="-4000" 
+						    data-rotate=-45 >
+						    <a href=http://beauty-of-imagination.blogspot.fr/2012/06/color-of-music-why-not-discover-pythons.html >Spectrosonogramme avec matplotlib</a><br/>
+						    <img  src=img/sono.png  />
+	      </div>
+		<div class="step boxed" data-scale=2 data-x="5500" data-y="-2000" 
+						     data-rotate=-30 >
+						     <a href=http://wwwstat.julbox.fr >Fréquentation de site web</a><br/>
+						     <br/>
+						     utilise <a href=https://github.com/jul/yahi>yahi</a> et flask<br/>
+						     <img src=img/wwwstat.png width=900px />
+		</div>
+		<div class="step " data-scale=2 data-x="5500" data-y="1000" 
+						data-rotate=0 >
+						<a href=http://wwwstat.julbox.fr >Stat de téléchargement sur pypi</a><br/>
+						<br/>
+						utilise <a href=https://github.com/jul/yahi>archery</a> et flask<br/>
+
+						<img src=img/stat.png width=900px />
+		</div>
+		<div class="content step" data-scale=10 data-x="-2000" data-y="2000" 
+							 data-rotate=180 >
+							 <h1 class=big >Diplômes</h1>
+		</div>
+		  <div class="content step" data-scale=1 
+	 data-rotate=180 data-x="-2000" data-y="1500">
+
+		    <h1 class=intitule >
+		      1998 Maître es science mention assez bien
+		    </h1>
+		      Université Pierre et Marie Curie (Paris VI)<br/>
+		      Option micro-électronique (CAO des microprocesseurs et programmation 
+		      des interfaces)
+		      <table>
+			<tr >
+			  <td class=field >
+			    Outil
+			  </td>
+			    <td class=is >
+			      VHDL, PSpice, matlab
+			    </td>
+			</tr>
+		      </table>
+
+
+		  </div>
+		  <div class="content step" data-scale=1 
+	 data-rotate=180 data-x="-2000" data-y="1000">
+
+		    <h1 class=intitule >
+		      2002 Cycle B CNAM ingénieurie des organisation
+		    </h1>
+		      Conservatoire National des Arts et Métiers (Paris)<br/>
+		      Chaire DSO<br/>
+		      <table>
+			<tr >
+			  <td class=field >
+			    Fonctionnel
+			  </td>
+			    <td class=is >
+			      Assurance Qualité, Conduite Opérationnelle du changement,
+			      Analyse des organisations
+			    </td>
+			</tr>
+		      </table>
+
+
+		  </div>
+    </div>
+  </div>
+    <div id=printable >
+      <center><a href="#/init" class=button >
+	  version  interactive
+	</a></center><br/>
+	<div class=coord >Julien Tayon<br/>
+	  <a class=coord href=mailto:julien@tayon.net >Julien@tayon.net</a><br/>
+	  <a class=coord href=http://github.com/jul >github.com/jul</a><br/>
+	  Tel: +33 (0) 7 6886 1982
+	</div>
+    </div>
+  </div>
+
+    <div class="hint">
+      <p>Use a spacebar or arrow keys to navigate</p>
+    </div>
+
+
+    <!--
+
+      Last, but not least.
+
+      To make all described above really work, you need to include impress.js in the page.
+      I strongly encourage to minify it first.
+
+      In here I just include full source of the script to make it more readable.
+
+      You also need to call a `impress().init()` function to initialize impress.js presentation.
+      And you should do it in the end of your document. Not only because it's a good practice, but also
+      because it should be done when the whole document is ready.
+      Of course you can wrap it in any kind of "DOM ready" event, but I was too lazy to do so ;)
+
+    -->
+    <script src="js/impress.js"></script>
+    <script src="js/jquery-1.8.2.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/startup.js"> </script>
+
+  </body>
+</html>
+

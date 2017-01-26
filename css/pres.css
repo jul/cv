@@ -19,6 +19,37 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
+pre.vi{
+    font-family:monospace;
+    box-shadow:4px 4px 0 0 rgba(80,80,80,.2);
+    display:block;
+    background: #eee;
+}
+span.PreProc{
+    color:#484;
+    font-weight:bold;
+}
+span.Statement{
+    color:#33d;
+}
+span.LIdentifier {
+    color:#844;
+    font-weight:bold;
+}
+span.Identifier {
+    color:#444;
+    font-weight:bold;
+}
+span.Comment{
+    color:#888;
+}
+p.exergue {
+	padding:.5em;
+	font-size:110%;
+	box-shadow:6px 6px 0 0 rgba(80,80,80,.5);
+	border-radius:4px;
+	border:1px solid rgba(80,80,80,.5);
+}
 ul { 
 margin-left: 2em;
 }
@@ -291,6 +322,9 @@ a:hover, a:focus {
     -ms-transform:     translateZ(50px);
     -o-transform:      translateZ(50px);
     transform:         translateZ(50px);
+}
+h1 {
+    text-align:center;
 }
 
 #title .footnote {
