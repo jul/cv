@@ -340,8 +340,10 @@ h1 {
 .big {
     width: 600px;
     text-align: center;
-    font-size: 60px;
+    font-size: 4em;
     line-height: 1;
+    font-weight:bold;
+     text-shadow: 2px 2px 2px #555;
 }
 
 #big b {

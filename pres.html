@@ -93,10 +93,7 @@ testing for  'complex' class
  neutral element for addition is 0j 
 
 **************************************************
-       </pre>
-       <pre id=spoiled 
-	      style='font-size:10%' 
-      >
+
 test #1
  a + b = b + a 
 'test_commutativity' is 'ok'
@@ -105,55 +102,12 @@ test #2
  a + neutral = a 
 'test_neutral' is 'ok'
 
-test #3
- 1 * a = a 
-'test_multiplicative_identity' is 'ok'
-
-test #4
- an_int * a = a + ... + a (n times ) 
-'test_scalar_multiplication' is 'ok'
-
-test #5
- an_int * a = a * an_int 
-'test_scalar_commutativity' is 'ok'
-
-test #6
- -a = -1 * a 
-'test_negative' is 'ok'
-
-test #7
- ( an_int *  other_scalar ) * a = an_int ( other_scalar * a )
-'test_associativity_scalar_multiplication' is 'ok'
-
-test #8
- ( an_int + other_scalar ) a = an_int * a  + other_scalar * a 
-'test_multiply_scalar_associativity' is 'ok'
-
-test #9
- a * other_scalar = other_scalar * a 
-'test_multiply_scalar_symmetric' is 'ok'
-
-test #10
-( a + b )  + c  = a + ( b + c )
-'test_associativity' is 'ok'
-
-test #11
- a - b = a + ( -1 * b) 
-'test_substraction' is 'ok'
+... other tests ....
 
 test #12
  an_int ( a + b) = an_int *a + an_int * b 
 'test_distributivity' is 'ok'
 
-test #13
- a  / 2  = .5 * a
-'test_fraction_consisentcy' is 'ok'
-
-test #14
- a * n  / 2  = a + ... + a n /2 times (n beign odd)
-'test_div_consisentcy' is 'ok'
-       </pre>
-       <pre style='font-size:60%'>
 **************************************************
 
 14/14
@@ -165,7 +119,7 @@ test #14
 	</div>
 
 	<div  class="content step"   data-scale=1.1 data-x="-000" data-y="3000"  >
-	  <h1 class=intitule><b>Just for fun what default type can be considered scalars? </b></h1>
+	  <h1 class=big><b>Just for fun what default type can be considered scalars? </b></h1>
 	  <center>
 	  <table class=res>
 	    <thead>
@@ -269,12 +223,12 @@ test #14
 
 	</div>
 	<div  class="content step"   data-scale=1 data-x="000" data-y="2000"  >
-	  <h1 class=intitule><b>Math books also gives you the Cook book</b></h1>
+	  <h1 class=big><b>Math books also gives you the Cook book</b></h1>
 	  <img src=img/somprod_vect.png />
 	</div>
 	<div  class="step content" data-scale=.6
        data-x="3000"  data-y="2000" >
-       <h1 class=intitule><b>So I don't need to justify my choices, I just need to code</b></h1>
+       <h1 class=big><b>So I don't need to justify my choices, I just need to code</b></h1>
        <p>
 		 Any implementations that passes the tests is a good enough implementation \o/<br/>
 		 Arbitrary choices:
@@ -293,7 +247,7 @@ to propagate anything that is a scalar to a leaf and just rely on the existence 
 </ul>
 Abstract base class (<i>type</i>) and duck typing (using the <i>operator</i>) are the only 2 tricks used.
 <br/>
-The exact same trick can probably implemented with C++ STL, in ruby, Perl, PHP.
+The exact same trick can probably be implemented with C++ STL, in ruby, Perl, PHP.
        </p>
 </div>
 	    <div class="content step" data-scale=5 data-x="1000" data-y="-6000" 
@@ -358,11 +312,13 @@ After all, with named regexp every record is a dict, and all dict can be added t
 
 A use case of this is log parsing (cf <a href=https://github.com/jul/yahi>yahi on github</a>).<br/>
 Or simply pypi-stats<br/>Better known as pypi-ranking (for which I am not credited, bouhouh)<br>
+<img src=img/stat.png width=60% />
+<img src=img/ranking.png width=60% />
 
 
 </div>
     <div class="step content" data-scale=1   data-x="1500" data-y="2500"  >
-        <h1 class=big>But does it have the promised mathematics behaviour?</h1>
+        <h1 class=big >But does it have the promised behaviour?</h1>
         Let's check.<br/>
         Can we mathematically expose an API that following the least surprise principle:
         <ul>
@@ -372,83 +328,79 @@ Or simply pypi-stats<br/>Better known as pypi-ranking (for which I am not credit
         </ul>
        
         
-</div>
-	<div  class="step  content " data-scale=.9 data-x="1500" data-y="3000"   >
-	  <h1 class=big><b>Let's make a simple observation</b></h1>
-	  <p>
-		On a dict (shortcut for MutableMapping) anything that is not a leaf is a part of a key.<br/>
-		But let's turn<br>
-		<code>{ 'a': { 'b' : 1 }, 'b' : 2}</code>
-		AS<br>
-		<code> { ('a', 'b') : 1; 'b': 2 }</code><br>
-		All keys are immutable. So the tuple of the keys is also...immutable.<br/> 
-		Hence:
-		<p class=exergue>Every distinct immutables path to a value are a key, and 
-		then we can reduce a recursive problem to a 1 level problem.<br/>
-		All dicts are utimately possibly put in a canonical one level form.<br/>
-		Every distinct immutable are called a distinct dimension.<br/>
-        We have an isomorphism between the one level Mapping and arbitrary depth Mappings.
-		</p>
-		<br>
-        Nice, then, since the problem is easy, let's implement <b>cosinus</b> and <b>dot product</b>.
-	
-	  </p>
-	</div>
-	
-	<div class="content step" data-scale=3 data-x="-2000" data-y="000" 
-							data-rotate=-90 >
-		<h1 class=big >First let's turn the axiom in a usable function</h1>
-		<pre class=vi>
+    </div>
+    <div  class="step  content " data-scale=.9 data-x="1500" data-y="3000"   >
+      <h1 class=big><b>Let's make a simple observation</b></h1>
+      <p>
+            On a dict (shortcut for MutableMapping) anything that is not a leaf is a part of a key.<br/>
+            But let's turn<br>
+            <code>{ 'a': { 'b' : 1 }, 'b' : 2}</code>
+            AS<br>
+            <code> { ('a', 'b') : 1; 'b': 2 }</code><br>
+            All keys are immutable. So the tuple of the keys is also...immutable.<br/> 
+            Hence:
+            <p class=exergue>Every distinct immutables path to a value are a key, and 
+            then we can reduce a recursive problem to a 1 level problem.<br/>
+            All dicts are utimately possibly put in a canonical one level form.<br/>
+            Every distinct immutable are paths are equivalment to a dimension.<br/>
+            We have an isomorphism between the one level MutableMapping and arbitrary depth Mappings.
+            </p>
+            <br>
+    Nice, then, since the problem is easy, let's implement <b>cosinus</b> and <b>dot product</b>.
+    
+      </p>
+    </div>
+    
+    <div class="content step" data-scale=3 data-x="-2000" data-y="000" 
+                                                    data-rotate=-90 >
+            <h1 class=big >First let's turn the axiom in a usable function</h1>
+            <pre class=vi>
 <span class="PreProc">from</span> collections <span class="PreProc">import</span> MutableMapping
 
 MARKER=<span class="Identifier">object</span>()
 
 <span class="Statement">def</span> <span class="LIdentifier">paired_row_iter</span>(tree, path=MARKER):
-    <span class="Statement">if</span> path <span class="Statement">is</span> MARKER:
-        path = <span class="Identifier">tuple</span>()
+<span class="Statement">if</span> path <span class="Statement">is</span> MARKER:
+    path = <span class="Identifier">tuple</span>()
 
-    <span class="Statement">for</span> k, v <span class="Statement">in</span> tree.iteritems():
-        <span class="Statement">if</span> <span class="Identifier">isinstance</span>(v, MutableMapping) <span class="Statement">and</span> <span class="Identifier">len</span>(v):
-            <span class="Statement">for</span> child <span class="Statement">in</span> <span class=LIdentifier >paired_row_iter</span>(v, path + (k,)):
-                <span class="Statement">yield</span> child
-        <span class="Statement">else</span>:
-            <span class="Statement">yield</span> ((path + (k,)) , v)
+<span class="Statement">for</span> k, v <span class="Statement">in</span> tree.iteritems():
+    <span class="Statement">if</span> <span class="Identifier">isinstance</span>(v, MutableMapping) <span class="Statement">and</span> <span class="Identifier">len</span>(v):
+        <span class="Statement">for</span> child <span class="Statement">in</span> <span class=LIdentifier >paired_row_iter</span>(v, path + (k,)):
+            <span class="Statement">yield</span> child
+    <span class="Statement">else</span>:
+        <span class="Statement">yield</span> ((path + (k,)) , v)
 
 <span class=Identifier >dict</span>(<span class=LIdentifier >paired_row_iter</span>({ 'a' : { 'b' :1},  'c':2, 'd' : {'e': []}, 'e': {} }) )
 <span class=Comment># {('a', 'b'): 1, ('c',): 2, ('d', 'e'): [], ('e',): {}}</span>
 
 </pre>
+    </div>
+      <div class="content step" data-scale=2
+    data-rotate=-90 data-x="-2000" data-y="-2000">
+    <h1 class=big ><b>let's read the specs</b></h1>
+        <img src=./img/dot_prod.png />
+    </div>
+    <div class="content step" data-scale=2
+        data-rotate=-90 data-x="-2500" data-y="-2000">
+        <h1 class=big>Let's implelement them</h1>
+    NB: algebra books don't specify abs but, being a purist, I want <i>u</i>.<i>u</i> to be
+    <ul>
+        <li>defined</li>
+        <li>normed</li>
+        <li>positive</li>
+    </ul>
+    to fit with the Lesbegue measure. Even, if scalars are <span class=Identifier>complex</span>
+                <pre class=vi>
+    dot = lambda u,v: sum(v for i,v in paired_row_iter(u*v))
 
-
-
-
-	</div>
-	  <div class="content step" data-scale=2
-	data-rotate=-90 data-x="-2000" data-y="-2000">
-            <h1>let's read the specs</h1>
-            <img src=./img/dot_prod.png />
-	</div>
-	  <div class="content step" data-scale=2
-	data-rotate=-90 data-x="-2500" data-y="-2000">
-            <h1 class=big>Let's implelement them</h1>
-NB: algebra books don't specify abs but, being a purist, I want <i>u</i>.<i>u</i> to be
-<ul>
-<li>defined</li>
-<li>normed</li>
-<li>positive</li>
-</ul>
-to fit with the Lesbegue measure. Even, if scalars are <span class=Identifier>complex</span>
-            <pre class=vi>
-dot = lambda u,v: sum(abs(v) for i,v in paired_row_iter(u*v))
-
-dot(mdict(x=1,y=1, z=1), mdict(x=1, y=1, z=1)
-# 3
-dot(mdict(x=1,), mdict( y=1, z=1)
-# 0
-</pre>
-Which is what math expects. 
-<br>
-</div>
+    dot(mdict(x=1,y=1, z=1), mdict(x=1, y=1, z=1)
+    # 3
+    dot(mdict(x=1,), mdict( y=1, z=1)
+    # 0
+    </pre>
+    Which is what math expects. 
+    <br>
+    </div>
 
 	  <div class="content step" data-scale=2
 	data-rotate=-90 data-x="-2500" data-y="-2000">
@@ -461,8 +413,7 @@ distance = lambda u, v: vabs(u-v)
 </pre>
 </div>
 
-<div>
-	  <div class="content step" data-scale=2
+  <div class="content step" data-scale=2
 	data-rotate=-90 data-x="-5000" data-y="2000">
         <h1 class=big>Which leaves us with ... the cosinus</h1>
         <img src=img/cos.png />
@@ -489,7 +440,6 @@ that already works for the 2D &amp; 3D euclidean space without even trying.<br/>
 
 </p>
 
-</div>
 </div>
 </div>
     <div id=printable >
