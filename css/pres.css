@@ -701,6 +701,9 @@ h1 {
     -o-transition:      opacity 1s 5s,      -o-transform 0.5s 4.5s;
     transition:         opacity 1s 5s,         transform 0.5s 4.5s;
 }
+#printable{
+    line-height:150%;
+}
 
 /*
     And as the last thing there is a workaround for quite strange bug.
