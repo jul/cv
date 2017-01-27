@@ -226,7 +226,7 @@ test #12
 	  </table>
 	  </center>
 	  You can also test strings, quaternions....
-       <p class=exergue>Yes, math rox, you are free to code whatever you want et you don't
+       <p class=exergue>Yes, math rox, you are free to code whatever you want and you don't
            have to justify youself, as long as you pass the tests</p>
            <br>
            <p><i>Note for coconut user that want algebraic data types: python
@@ -361,7 +361,7 @@ Or simply pypi-stats<br/>Better known as pypi-ranking (for which I am not credit
   data-rotate=380  >
   <h1 class=big><b>Let's make a simple observation</b></h1>
   <p>
-        On a dict (shortcut for MutableMapping) anything that is not a leaf is a part of a key.<br/>
+        On a MutableMapping anything that is not a leaf is a part of a key.<br/>
         But let's turn<br>
         <code>{ 'a': { 'b' : 1 }, 'b' : 2}</code>
         AS<br>
@@ -370,7 +370,7 @@ Or simply pypi-stats<br/>Better known as pypi-ranking (for which I am not credit
         Hence:
         <p class=exergue>Every distinct immutables path to a value are a key, and 
         then we can reduce a recursive problem to a 1 level problem.<br/>
-        All dicts are utimately possibly put in a canonical one level form.<br/>
+        All MutableMapping are utimately possibly put in a canonical one level form.<br/>
         Every distinct immutable paths to a value are equivalent to a dimension.<br/>
         We have an isomorphism between the one level MutableMapping and arbitrary depth MutableMappings.
         </p>
@@ -442,7 +442,9 @@ dot(mdict(x=1,), mdict( y=1, z=1)
 dot(mdict(x=1,), mdict(x=-1, y=1, z=1)
 # -1 
 </pre>
-Which is what math expects. 
+For int and real, the resutls are following expectation. 
+<br/>
+For complex, I am pretty clueless if it is <i>normal</i>.
 <br>
 </div>
 
@@ -487,37 +489,84 @@ that already works for the 2D &amp; 3D euclidean space without even trying.<br/>
 </div>
 <div class="step content " 
     data-rotate=270 data-x="4000" data-y="3000">
-<h1 class=big>An orthognal rant on OOP introduction with the 2D point class</h1>
+<h1 class=big>An orthogonal rant on OOP introduction with the 2D point class</h1>
 <small>(oh! a geometrical joke)</small><br/>
-Even without having dict behaving like SLOW vectors (compared to a numpy array),
-python already has the complex type that is natively supported on intel CPU
-for rotation (aka multiplication), translation (addition) and homothetia (mul).
+Complex type that is natively supported on python. EVERYTHING
 <br/>
-I will bow to python3 documentation which has reduced considerably the Point 
+python3 documentation has reduced considerably the Point 
 example in the <a href=https://docs.python.org/3/library/collections.html> collections doc</a>
 <br/>
-and here is the pixel example with mdict and the computation of the <i>distance to the origin</i> 
-<pre class=vi>
-vabs(
-    mdict(
-        x=23,
-        y=45,
-        red=34,
-        blue=56,
-        green=40,
-        alhpa=.45
-    ) * mdict(
-        x=1, y=1
-    )
-)
-# 50.53711507397311
-</pre>
-
+I cannot say how much I consider the 2D class Point as misleading as <i>Hello world</i>
 
 </div>
-<div class="step content " 
-    data-rotate=270 data-x="2000" data-y="3000">
-    here
+
+<div
+    class="step content " 
+    data-rotate=270 data-x="3500" data-y="3000">
+    <h1 class=big>Parellism you said?</h1>
+    <p>
+        Our data job often? take a dict (like after we parse a log line, or cvs) and 
+        aggregating the data in a dict.
+    </p>
+    <pre class=vi>
+        log_line = mdict( ip = "127.0.0.1", user_agent = "moz", country="BE",
+        url="/toto" )
+        data = mdict( by_country = mdict( GR=12, CA=10), user_agent=mdidct(chrome=1,  ie=1000,))
+        data["user_agent"] += log_line * mdict( user_agent = 1)
+        
+    </pre>
+    What if we don't have a dict, but just a MutableMapping that directs __getitem__ and __setitem__ to a distant instance? <br/>
+
+    <br/>
+</div>
+<div
+    class="step content " 
+    data-rotate=270 data-x="3500" data-y="2000">
+    <h1 class=big>Should I use your library?</h1>
+    <ul>
+        <li>migration to py3 stopped since 3 years (unexpected events occured)</li>
+        <li>It works for me(c)</li>
+        <li>the naming is awfull and what was indentend as puns is a pain</li>
+        <li>for dimension greater than 3 results are consistent</li>
+        <li>I did it because I could, without thinking. Critic welcomed.</li>
+    </ul>
+    <a href=http://pythonhosted.org/VectorDict/vector.html#exemples>VectorDict</a> is used O_o (I still have to push a pull request in pypi). I DO NOT recommend it, except for seeing the features I was initially encompassing.
+    <br/>
+    <a href=http://archery.readthedocs.io/en/latest/index.html>Archery</a> implementing the mixin separately at my opinion is quite mature. BUT, I have trust issues, because I lack of feedback.<br/>
+    I hate the naming and how I pedantically <i>javafied</i> the module layout.
+    <br/>
+    I strongly advise to see this code as an academic work and a proof of concept that is delivered <i>AS IS</i>
+
+</div>
+<div
+    class="step content " 
+    data-rotate=270 data-x="3500" data-y="1000">
+    <h1 class=big>Other mad scientist project with Mappings?</h1>
+
+    <ul>
+        <li><a href=http://pythonhosted.org/VectorDict/matrix.html>generic sparse matrices for transforming dict in dict</a></li>
+        <li><a href=http://pythonhosted.org/VectorDict/vector.html#selecting-item-in-a-tree> traversal and exploration of dict in jquery fashion</a></li>
+        <li>other algebra (Rieman, Hibertian) and try to bring
+        different algebra for different keys</li>
+        <li>defining generic algebra to measure distances other cos, other
+        norms...</li>
+        <li><a href=https://closeto.readthedocs.io/en/latest/definitions.html>closeto operator</a> aka using duck typing and geometry to <i>type</i> data in algebra that are consistant</li>
+        <li><a href=http://pythonhosted.org/VectorDict/vector.html#set-operations> Implementing a Karnaugh/set consistent algebra in forms of mixin for MutableMapping (__or__, __and__, __not__, __xor__ ...)</a></li>
+    </ul>
+</div>
+<div
+    class="step content " 
+    data-rotate=270 data-x="3500" data-y="000">
+    <h1 class=big>And have you tried proposing to python-ideas?</h1>
+    Lol<br>
+    I tried.
+    <ul>
+        <li>Not a great communicator</li>
+        <li>Too dyslexic to write a PEP</li>
+        <li>I don't really like to evangelize</li>
+    </ul>
+    </div>
+
 </div>
     <div id=printable >
       <center><a href="#/init" class=button >
