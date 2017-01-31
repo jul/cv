@@ -17,6 +17,9 @@
     <link href="css/cv.css" rel="stylesheet" />
     <link rel="shortcut icon" href="favicon.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
   </head>
 
   <body class="impress-not-supported">
@@ -46,7 +49,17 @@
         </ul>
       </div>
       <div id="CVinter" class="content step " data-scale=1 data-x="1500" data-y="00" data-rotate=45  >
-        <h1 class=big >Linear algebra 101:</h1>
+        All great story begins with a book! And too much free time<br/>
+        <h1 class=big >Part1: The magic of algebra</h1>
+          It's all about behaviours<br/>
+          Legal discolusure: My linear algebra books is the french version of<br/>
+          <a href=http://www.goodreads.com/book/show/205506.Schaum_s_Outline_of_Linear_Algebra>
+            Lipschutz Linear Algebra (Shaum edition)</a>
+     
+     </div>
+      <div class="content step " data-scale=2 data-x="2000" data-y="2000" data-rotate=90 >
+	
+	   <h1 class=big >Linear algebra 101:</h1>
         <p>
         If you behave nicely and consistently you have super cow powers including
         <ul>
@@ -57,13 +70,6 @@
           <li>least surprises
           </li>
         </ul>
-      </div>
-      <div class="content step " data-scale=2 data-x="2000" data-y="2000" data-rotate=90 >
-	<h1 class=big >Part1: The magic of algebra</h1>
-	  It's all about behaviours<br/>
-	  Legal discolusure: My linear algebra books is the french version of<br/>
-	  <a href=http://www.goodreads.com/book/show/205506.Schaum_s_Outline_of_Linear_Algebra>
-	    Lipschutz Linear Algebra (Shaum edition)</a>
       </div>
       <div  class="content step"   data-scale=1 data-x="1000" data-y="2000"
         data-rotate=90  >
@@ -299,12 +305,10 @@ test #12
 <li> * (<span class=Identifier>___mul__, __rmul__, __imul__</span>) </li>
 <li> / (<span class=Identifier>___div__, __rdiv__, __idiv__</span>) </li>
 </ul>
-to propagate the operator to a leaf and just let python do its job.
+    and if a left and right are mutable mapping <i>aka dict</i>, I propagate as long as both left/right operantd match key path to a leaf
+
 </li>
 <li>I made junction of relationships such as defining <span class=Identifier>__neg__</span> (unary -) as <pre class=vi>__neg__ = lambda self: self*=-1</pre> to ensure consistency
-</li>
-<li>
-    and if a left and right are mutable mapping <i>aka dict</i>, I propagate as long as both left/right operantd match key path to a leaf
 </li>
 </ul>
 Abstract base class (<i>type</i>) and duck typing (using the <i>operator</i>) are the only 2 tricks used.
@@ -433,10 +437,12 @@ vabs = lambda v: dot(v,v)**.5
 distance = lambda u, v: vabs(u-v)
 </pre>
 
+<small>I disagree with Lipschutz I think Ln norms should be taken for dimension n
 
-
-
-
+$$ \left\| x \right\| _p = \bigg( \sum_{ i \in \mathbb N} \left| x_i \right| ^p \bigg) ^{1/p}$$
+<br>
+Where p = the dimension of your base.
+</small>
 
 
 
@@ -444,7 +450,8 @@ distance = lambda u, v: vabs(u-v)
   <div class="content step" data-scale=1.2
 data-rotate=360 data-x="-000" data-y="4000">
 
-    <h1 class=big>And nor far from the ... cosinus</h1>
+    <h1 class=big>And not far from the ... cosinus</h1>
+    <small>(math pun are a sine)</small>
     <img src=img/cos.png />
 <pre class=vi>
 vcos = lambda u,v : dot(u,v) / vabs(u) / vabs(v)
@@ -652,7 +659,6 @@ data["user_agent"] += log_line * mdict( user_agent = 1)
         <a href=http://www.mheducation.com/about.html >Mc Graw Hill edition</a> without which I would never have access to cheap non pedantic books during my studies (okay, I should also include <a href=http://www.oreilly.com/ >O'Reilly</a>)
         </li>
         </ul>
-    
     </div>
 
 
