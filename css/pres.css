@@ -19,6 +19,26 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
+@keyframes crazy {
+  from {
+    color:yellow;
+    font-size:100%;
+    transform:rotate(0deg);
+  }
+  to {
+    color:blue;
+    font-size:300%;
+    /*transform:translate3d(-12px, 50%, -3em) rotateY(0);*/
+    transform:rotate(360deg);
+  }
+}
+.crazy {
+position:fixed;
+ animation-duration: 1s;
+  animation-name: crazy;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
 pre.vi{
     font-family:monospace;
     box-shadow:4px 4px 0 0 rgba(80,80,80,.2);
@@ -221,7 +241,7 @@ a:hover, a:focus {
 */
 .impress-enabled .step {
     margin: 0;
-    opacity: 0.2;
+    opacity: 0.05;
 
     -webkit-transition: opacity 1s;
     -moz-transition:    opacity 1s;

@@ -83,7 +83,7 @@
       <div  class="content step"   data-scale=1 data-x="00" data-y="2000" 
          data-rotate=120
           >
-	<h1 class=big>Writing you own test frameworks</h1>
+	<h1 class=big>Step 0: Writing you own test frameworks</h1>
 	<p>
 	Doesn't it look like the exact perfect match case of a unit test?<br/>
 	<a href=https://github.com/jul/ADictAdd_iction/blob/master/vector_dict/ConsistentAlgebrae.py#L168-L198 >
@@ -250,19 +250,49 @@ test #12
 	<div  class="content step"   data-scale=1 data-x="-2000" data-y="2000"
           data-rotate=220
             >
-	  <h1 class=big><b>Math books also gives you the Cook book</b></h1>
-	  <img src=img/somprod_vect.png />
+
+  <h1 class=big><b>Let's make a simple observation</b></h1>
+  <p>
+        On a MutableMapping anything that is not a leaf is a part of a key.<br/>
+        But let's turn<br>
+        <code>{ 'a': { 'b' : 1 }, 'b' : 2}</code>
+        AS<br>
+        <code> { ('a', 'b') : 1; 'b': 2 }</code><br>
+        All keys are immutable. So the tuple of the keys is also...immutable.<br/> 
+        Hence:
+        <p class=exergue>Every distinct immutables path to a value are a key, and 
+        then we can reduce a recursive problem to a 1 level problem.<br/>
+        All MutableMapping are utimately possibly put in a canonical one level form.<br/>
+        Every distinct immutable paths to a value are equivalent to a dimension.<br/>
+        We have an isomorphism between the one level MutableMapping and arbitrary depth MutableMappings.
+        </p>
+        <br>
+
+        We transformed a recursive/deep level problem in a one depth problem.
+
+</p>
 	</div>
         <div  class="step content" data-scale=1.2
        data-x="-1000"  data-y="3000"
       data-rotate=250
        >
-       <h1 class=big><b>So I don't need to justify my choices, I just need to code</b></h1>
+
+          <h1 class=big><b>Math books then gives you the Cook book</b></h1>
+          <img src=img/somprod_vect.png />
+
+
+
+</div>
+        <div class="content step" data-scale=1 data-x="00" data-y="3000" 
+                                              data-rotate=280 >
+
+
+       <h1 class=big><b>Part 2: making dict follow linear algebra behaviour</b></h1>
        <p>
-		 Arbitrary choices:
+                 Arbitrary choices:
 <ul>
 <li>
-	I overload
+        I overload
         <ul>
     <li> + (<span class=Identifier>___add__,__radd__, __iadd__</span>) </li>
 <li> - (<span class=Identifier>___sub__, __rsub__, __isub__</span>) </li>
@@ -280,13 +310,16 @@ to propagate the operator to a leaf and just let python do its job.
 Abstract base class (<i>type</i>) and duck typing (using the <i>operator</i>) are the only 2 tricks used.
 <br/>
    </p>
-<p class=exergue>
+<p class=exergue><b>
 The exact same trick can probably be implemented with C++ STL, in ruby, Perl, PHP, javascript...
-</p>
-</div>
-        <div class="content step" data-scale=1 data-x="00" data-y="3000" 
-                                              data-rotate=280 >
-                                              <h1 class=big>And? Does it seems to pass tests?</h1>
+</b></p>
+
+
+        </div>
+    <div  class="step  content " data-scale=1 data-x="-500" data-y="3000"
+     data-rotate=310
+        >
+                                              <h1 class=big>Part 3: And? Does it pass the tests?</h1>
 At least for the simple case...
 <pre class=vi>
 **************************************************
@@ -297,7 +330,7 @@ a = {'one_and_two': 3, 'one': 1}
 b = {'two': 2, 'one_and_two': -1}
 c = {'one': 3, 'three': 1, 'two': 2}
 an_int = 2 
-other_scalar = 3 
+other_scalar = 3
 neutral element for addition is {} 
 
 **************************************************
@@ -309,132 +342,52 @@ neutral element for addition is {}
 
 **************************************************
 </pre>
-        </div>
-    <div  class="step  content " data-scale=1 data-x="-500" data-y="3000"
-     data-rotate=310
-        >
-    <h1 class=big><b>Let's watch the behaviour of more complex data</b></h1>
-    <pre class=vi>
-<span class=PreProc>from</span> archery <span class=PreProc>import</span> mdict #multiplicative dict
 
-<span class=Statement>class</span> <span class=LIdentifier><span class=LIdentifier>Tset</span></span>(<span class=Identifier>set</span>): <span class=Statement>pass</span>
 
-<span class=LIdentifier><span class=LIdentifier>Tset</span></span>.__add__ = <span class=Identifier>set</span>.__or__
+<span class=crazy >Yes!!!</span><br/><br/><br/>
+We have a one level dict behaving as a vector...
 
-<span class=LIdentifier>mdict</span>(a=[1, ], b='a', c=<span class=Identifier>complex</span>(0,1))
-<span class=Comment>#Out[13]: {'a': [1], 'b': 'a', 'c': 1j}</span>
-
-<span class=LIdentifier>mdict</span>(a=[1, ], b='a', c=<span class=Identifier>complex</span>(0,1)) *2
-<span class=Comment>#Out[14]: {'a': [1, 1], 'b': 'aa', 'c': 2j}</span>
-
-<span class=LIdentifier>mdict</span>(a=[1, ], b='a', c=<span class=Identifier>complex</span>(0,1), d=<span class=LIdentifier>Tset</span>('abc'))
-<span class=Comment>#Out[15]: {'a': [1], 'b': 'a', 'c': 1j, 'd': {'a', 'b', 'c'}}</span>
-
-<span class=LIdentifier>mdict</span>(a=[1, ], b='a', c=<span class=Identifier>complex</span>(0,1), d=<span class=LIdentifier>Tset</span>('abc')) + mdict(d=<span class=LIdentifier>Tset</span>('efa'))
-<span class=Comment>#Out[16]: {'a': [1], 'b': 'a', 'c': 1j, 'd': {'a', 'b', 'c', 'e', 'f'}}</span>
-
-<span class=LIdentifier>mdict</span>(a=[1, ], b='a', c=<span class=Identifier>complex</span>(0,1) ) * 2
-<span class=Comment>#Out[17]: {'a': [1, 1], 'b': 'aa', 'c': 2j}</span>
-
-<span class=Identifier><span class=Identifier>complex</span></span>(0,1) * (<span class=LIdentifier>mdict</span>(x=.1, y=2) * <span class=LIdentifier>mdict</span>(x=2,y=3, z=4) + <span class=LIdentifier>mdict</span>(a = <span class=LIdentifier>mdict</span>(c=2)))
-<span class=Comment># {'a': {'c': 2j}, 'x': 0.2j, 'y': 6j}</span>
-
-    </pre>
-Well, so far, it seems consistent and usable. <br/>
-After all, with named regexp every record is a dict, and all dict can be added to bigger dicts.
     </div>
     <div  class="step  content " data-scale=.9 data-x="-2500" data-y="3000"   
      data-rotate=310
      >
-<h1 class=big>Use case?</h1>
-
-A use case of this is log parsing (cf <a href=https://github.com/jul/yahi>yahi on github</a>).<br/>
-Or simply pypi-stats<br/>Better known as pypi-ranking (for which I am not credited, bouhouh)<br>
-<img src=img/stat.png width=60% />
-<img src=img/ranking.png width=60% />
 
 
-</div>
-<div class="step content" data-scale=1   data-x="-2500" data-y="2500" 
-    data-rotate=350
-    >
-    <h1 class=big >But does it have the promised behaviour?</h1>
-    Let's check.<br/>
-    Can we mathematically expose an API that following the least surprise principle:
-    <ul>
-        <li>for computers? (checked)</li>
-        <li>for coders? (it works for me)</li>
-        <li>actual mathematical use? (...)</li>
-    </ul>
-   
-    
-</div>
-<div  class="step  content " data-scale=.9 data-x="-1500" data-y="2500" 
-  data-rotate=380  >
-  <h1 class=big><b>Let's make a simple observation</b></h1>
-  <p>
-        On a MutableMapping anything that is not a leaf is a part of a key.<br/>
-        But let's turn<br>
-        <code>{ 'a': { 'b' : 1 }, 'b' : 2}</code>
-        AS<br>
-        <code> { ('a', 'b') : 1; 'b': 2 }</code><br>
-        All keys are immutable. So the tuple of the keys is also...immutable.<br/> 
-        Hence:
-        <p class=exergue>Every distinct immutables path to a value are a key, and 
-        then we can reduce a recursive problem to a 1 level problem.<br/>
-        All MutableMapping are utimately possibly put in a canonical one level form.<br/>
-        Every distinct immutable paths to a value are equivalent to a dimension.<br/>
-        We have an isomorphism between the one level MutableMapping and arbitrary depth MutableMappings.
-        </p>
-        <br>
-Nice, then, since the problem is easy, let's implement <b>cosinus</b> and <b>dot product</b>.
-
-  </p>
-</div>
-<div class="step" data-scale=1 data-x=-1500 data-y=3000
-    data-rotate=360>
-    <h1 class=big>Please stop the roto-zoom slides</h1>
-    Yes I noticed the persons on the last row being sea sick.<br/>
-    Social experiment #154 over: roto-zoom presentation make people 
-    uncomfortable. Lol
-</div>
-
-<div class="content step" data-scale=1 data-x="-000" data-y="3000" 
-                                                data-rotate=360 >
-        <h1 class=big >First let's turn the axiom in a usable function</h1>
+        <h1 class=big >Part 4: Let's use the theorem to make intricate dict into vector<br/>
+        let's implement, cos, dot
+        </h1>
         <pre class=vi>
 <span class="PreProc">from</span> collections <span class="PreProc">import</span> MutableMapping
 
 MARKER=<span class="Identifier">object</span>()
 
 <span class="Statement">def</span> <span class="LIdentifier">paired_row_iter</span>(tree, path=MARKER):
-<span class="Statement">if</span> path <span class="Statement">is</span> MARKER:
-path = <span class="Identifier">tuple</span>()
+    <span class="Statement">if</span> path <span class="Statement">is</span> MARKER:
+        path = <span class="Identifier">tuple</span>()
 
-<span class="Statement">for</span> k, v <span class="Statement">in</span> tree.iteritems():
-<span class="Statement">if</span> <span class="Identifier">isinstance</span>(v, MutableMapping) <span class="Statement">and</span> <span class="Identifier">len</span>(v):
-    <span class="Statement">for</span> child <span class="Statement">in</span> <span class=LIdentifier >paired_row_iter</span>(v, path + (k,)):
-        <span class="Statement">yield</span> child
-<span class="Statement">else</span>:
-    <span class="Statement">yield</span> ((path + (k,)) , v)
+    <span class="Statement">for</span> k, v <span class="Statement">in</span> tree.iteritems():
+        <span class="Statement">if</span> <span class="Identifier">isinstance</span>(v, MutableMapping) <span class="Statement">and</span> <span class="Identifier">len</span>(v):
+            <span class="Statement">for</span> child <span class="Statement">in</span> <span class=LIdentifier >paired_row_iter</span>(v, path + (k,)):
+                <span class="Statement">yield</span> child
+        <span class="Statement">else</span>:
+            <span class="Statement">yield</span> ((path + (k,)) , v)
 
 <span class=Identifier >dict</span>(<span class=LIdentifier >paired_row_iter</span>({ 'a' : { 'b' :1},  'c':2, 'd' : {'e': []}, 'e': {} }) )
 <span class=Comment># {('a', 'b'): 1, ('c',): 2, ('d', 'e'): [], ('e',): {}}</span>
 
 </pre>
 </div>
-  <div class="content step" data-scale=1.2
-data-rotate=360 data-x="-000" data-y="4000">
-<h1 class=big ><b>let's read the specs</b></h1>
-    <img src=./img/dot_prod.png />
-</div>
-<div class=step data-rotate=360 data-x=1000 data-y=4000 data-scale=.1>
-    <h1 class=big>Please stop the abuse of zoom and random direction</h1>
-    Gosh :) Sorry
-</div>
-<div class="content step" data-scale=1
-    data-rotate=360 data-x="1500" data-y="4000"
+<div class="step content" data-scale=1   data-x="-2500" data-y="2500" 
+    data-rotate=350
     >
+<h1 class=big ><b>let's read the specs of the dot product</b></h1>
+    <img src=./img/dot_prod.png />
+
+
+</div>
+<div  class="step  content " data-scale=.9 data-x="-1500" data-y="2500" 
+  data-rotate=380  >
+
     <h1 class=big>Let's implelement them</h1>
 NB: Purists want measure <i>u</i>.<i>u</i> to be
 <ul>
@@ -442,12 +395,12 @@ NB: Purists want measure <i>u</i>.<i>u</i> to be
     <li>normed</li>
     <li>positive</li>
 </ul>
-to fit with the Lesbegue measure. <br/>
+to fit with the Lebesgue measure. <br/>
 My <i>distance</i> however does yield a <span class=Identifier>complex</span>, if scalars are <span class=Identifier>complex</span>.
             <pre class=vi>
 dot = lambda u,v: sum(v for i,v in paired_row_iter(u*v))
 
-dot(mdict(x=1,y=1, z=1), mdict(x=1, y=1, z=1)
+dot(mdict(x=1,y=1, z=1), mdict(x=1, y=1, z=1))
 # 3
 dot(mdict(x=1,), mdict( y=1, z=1)
 # 0
@@ -458,6 +411,71 @@ For int and real, the resutls are following expectation.
 <br/>
 For complex, I am pretty clueless if it is <i>normal</i>.
 <br>
+
+</div>
+<div class="step" data-scale=1 data-x=-1500 data-y=3000
+    data-rotate=360>
+
+    <h1 class=big>Please stop the roto-zoom slides</h1>
+    Yes I noticed the persons on the last row being sea sick.<br/>
+    Social experiment #154 over: roto-zoom presentation make people 
+    uncomfortable. Lol
+</div>
+
+<div class="content step" data-scale=1 data-x="-000" data-y="3000" 
+                                                data-rotate=360 >
+
+
+
+
+
+    <h1 class=big><b>Let's watch the behaviour of more complex data</b></h1>
+    Time to switch to notebook (1st part)
+    
+<center>
+    <iframe style="display:block;margin:0 auto;" width=1280 height=800  src=FOSDEM.html></iframe>
+<center>
+
+
+<h1 class=big>Use case?</h1>
+
+A use case of this is log parsing (cf <a href=https://github.com/jul/yahi>yahi on github</a>).<br/>
+Or simply pypi-stats<br/>Better known as pypi-ranking (for which I am not credited, bouhouh)<br>
+<img src=img/stat.png width=60% />
+<img src=img/ranking.png width=60% />
+    
+    <h1 class=big >But does it have the promised behaviour?</h1>
+    Let's check.<br/>
+    Can we mathematically expose an API that following the least surprise principle:
+    <ul>
+        <li>for computers? (checked)</li>
+        <li>for coders? (it works for me)</li>
+        <li>actual mathematical use? (...)</li>
+    </ul>
+   
+    
+
+
+
+
+
+
+</div>
+  <div class="content step" data-scale=1.2
+data-rotate=360 data-x="-000" data-y="4000">
+</div>
+<div class=step data-rotate=360 data-x=1000 data-y=4000 data-scale=.1>
+    <h1 class=big>Please stop the abuse of zoom and random direction</h1>
+    Gosh :) Sorry
+</div>
+<div class="content step" data-scale=1
+    data-rotate=360 data-x="1500" data-y="4000"
+    >
+
+
+
+
+
 </div>
 
       <div class="content step" data-scale=1
@@ -499,6 +517,18 @@ that already works for the 2D &amp; 3D euclidean space without even trying.<br/>
 </p>
 
 </div>
+
+<div
+    class="step content " 
+    data-rotate=360 data-x="3500" data-y="4000">
+
+Erased
+
+</div>
+
+
+
+
 <div class="step content " 
     data-rotate=270 data-x="4000" data-y="3000">
 <h1 class=big>An orthogonal rant on OOP introduction with the 2D point class</h1>
