@@ -353,7 +353,7 @@ We have a one level dict behaving as a vector...
      >
 
 
-        <h1 class=big >Part 4: Let's use the theorem to make intricate dict into vector<br/>
+        <h1 class=big >Part 4: Let's use the isomorphism to make intricate dict into vector<br/>
         let's implement, cos, dot
         </h1>
         <pre class=vi>
@@ -402,9 +402,9 @@ dot = lambda u,v: sum(v for i,v in paired_row_iter(u*v))
 
 dot(mdict(x=1,y=1, z=1), mdict(x=1, y=1, z=1))
 # 3
-dot(mdict(x=1,), mdict( y=1, z=1)
+dot(mdict(x=1,), mdict( y=1, z=1))
 # 0
-dot(mdict(x=1,), mdict(x=-1, y=1, z=1)
+dot(mdict(x=1,), mdict(x=-1, y=1, z=1))
 # -1 
 </pre>
 For int and real, the resutls are following expectation. 
@@ -425,35 +425,15 @@ For complex, I am pretty clueless if it is <i>normal</i>.
 <div class="content step" data-scale=1 data-x="-000" data-y="3000" 
                                                 data-rotate=360 >
 
+<h1 class=big>Dot product is one step away from distance</h1>
+<img src=img/distance.png />
+Now we can define <i>abs</i> (which is a mathemtic shortcut for L2 distance/norm) and distance as 
+<pre class=vi>
+vabs = lambda v: dot(v,v)**.5
+distance = lambda u, v: vabs(u-v)
+</pre>
 
 
-
-
-    <h1 class=big><b>Let's watch the behaviour of more complex data</b></h1>
-    Time to switch to notebook (1st part)
-    
-<center>
-    <iframe style="display:block;margin:0 auto;" width=1280 height=800  src=FOSDEM.html></iframe>
-<center>
-
-
-<h1 class=big>Use case?</h1>
-
-A use case of this is log parsing (cf <a href=https://github.com/jul/yahi>yahi on github</a>).<br/>
-Or simply pypi-stats<br/>Better known as pypi-ranking (for which I am not credited, bouhouh)<br>
-<img src=img/stat.png width=60% />
-<img src=img/ranking.png width=60% />
-    
-    <h1 class=big >But does it have the promised behaviour?</h1>
-    Let's check.<br/>
-    Can we mathematically expose an API that following the least surprise principle:
-    <ul>
-        <li>for computers? (checked)</li>
-        <li>for coders? (it works for me)</li>
-        <li>actual mathematical use? (...)</li>
-    </ul>
-   
-    
 
 
 
@@ -463,35 +443,8 @@ Or simply pypi-stats<br/>Better known as pypi-ranking (for which I am not credit
 </div>
   <div class="content step" data-scale=1.2
 data-rotate=360 data-x="-000" data-y="4000">
-</div>
-<div class=step data-rotate=360 data-x=1000 data-y=4000 data-scale=.1>
-    <h1 class=big>Please stop the abuse of zoom and random direction</h1>
-    Gosh :) Sorry
-</div>
-<div class="content step" data-scale=1
-    data-rotate=360 data-x="1500" data-y="4000"
-    >
 
-
-
-
-
-</div>
-
-      <div class="content step" data-scale=1
-    data-rotate=360 data-x="1500" data-y="3000">
-<h1 class=big>So let's implement the rest of the specs</h1>
-<img src=img/distance.png />
-Now we can define <i>abs</i> (which is a mathemtic shortcut for L2 distance/norm) and distance as 
-<pre class=vi>
-vabs = lambda v: dot(v,v)**.5
-distance = lambda u, v: vabs(u-v)
-</pre>
-</div>
-
-<div class="content step" data-scale=1
-    data-rotate=360 data-x="2500" data-y="3000">
-    <h1 class=big>Which leaves us with ... the cosinus</h1>
+    <h1 class=big>And nor far from the ... cosinus</h1>
     <img src=img/cos.png />
 <pre class=vi>
 vcos = lambda u,v : dot(u,v) / vabs(u) / vabs(v)
@@ -516,13 +469,78 @@ that already works for the 2D &amp; 3D euclidean space without even trying.<br/>
 
 </p>
 
+
+</div>
+<div class=step data-rotate=360 data-x=1000 data-y=4000 data-scale=.1>
+    <h1 class=big>Please stop the abuse of zoom and random direction</h1>
+    Gosh :) Sorry
+</div>
+
+<div class="content step" data-scale=1
+    data-rotate=360 data-x="1500" data-y="4000"
+    >
+
+  <h1 class=big >But does it have the promised behaviour?</h1>
+    Let's check.<br/>
+    Can we mathematically expose an API that following the least surprise principle:
+    <ul>
+        <li>for computers? (checked)</li>
+        <li>for coders? (it works for me)</li>
+        <li>actual mathematical use? (...)</li>
+    </ul>
+    Especially, is it useful?<br/>
+    intuitive? <br/>
+    working correctly?<br/>
+
+
+</div>
+
+      <div class="content step" data-scale=1
+    data-rotate=360 data-x="1500" data-y="3000">
+
+    <h1 class=big><b>Let's watch the behaviour of more complex data</b></h1>
+    Time to switch to ipython notebook \o/
+    
+
+
+</div>
+
+<div class="content step" data-scale=1
+    data-rotate=360 data-x="2500" data-y="3000">
+
+<center>
+    <iframe style="display:block;margin:0 auto;" width=1280 height=800  src=FOSDEM.html></iframe>
+<center>
+
+
 </div>
 
 <div
     class="step content " 
     data-rotate=360 data-x="3500" data-y="4000">
 
-Erased
+
+
+<h1 class=big>Use case?</h1>
+<ul>
+<li>
+Text indexation
+</li>
+<li>
+aggregating log parsing (cf <a href=https://github.com/jul/yahi>yahi on github</a>).<br/>
+Or simply pypi-stats<br/>Better known as pypi-ranking (for which I am not credited, bouhouh)<br>
+</li>
+<li>
+dict manipulations and measurement
+</li>
+</ul>
+<img src=img/stat.png width=60% />
+<img src=img/ranking.png width=60% />
+    
+   
+    
+
+
 
 </div>
 
@@ -533,7 +551,8 @@ Erased
     data-rotate=270 data-x="4000" data-y="3000">
 <h1 class=big>An orthogonal rant on OOP introduction with the 2D point class</h1>
 <small>(oh! a geometrical joke)</small><br/>
-Complex type that is natively supported on python. EVERYTHING
+Complex type does EVERYTHING better than any 2D class I saw! <br>
+Maths are powerful, use them: <a href=https://gist.github.com/jul/200d3a5895a437e20df6>check here</a>
 <br/>
 python3 documentation has reduced considerably the Point 
 example in the <a href=https://docs.python.org/3/library/collections.html> collections doc</a>
@@ -546,15 +565,16 @@ I cannot say how much I consider the 2D class Point as misleading as <i>Hello wo
     class="step content " 
     data-rotate=270 data-x="3500" data-y="3000">
     <h1 class=big>Parellism you said?</h1>
+    <small>(Another geometrical joke)</small>
     <p>
         Our data job often? take a dict (like after we parse a log line, or cvs) and 
         aggregating the data in a dict.
     </p>
     <pre class=vi>
-        log_line = mdict( ip = "127.0.0.1", user_agent = "moz", country="BE",
-        url="/toto" )
-        data = mdict( by_country = mdict( GR=12, CA=10), user_agent=mdidct(chrome=1,  ie=1000,))
-        data["user_agent"] += log_line * mdict( user_agent = 1)
+log_line = mdict( ip = "127.0.0.1", user_agent = "moz", country="BE",
+url="/toto" )
+data = mdict( by_country = mdict( GR=12, CA=10), user_agent=mdidct(chrome=1,  ie=1000,))
+data["user_agent"] += log_line * mdict( user_agent = 1)
         
     </pre>
     What if we don't have a dict, but just a MutableMapping that directs __getitem__ and __setitem__ to a distant instance? <br/>
@@ -570,7 +590,8 @@ I cannot say how much I consider the 2D class Point as misleading as <i>Hello wo
         <li>It works for me(c)</li>
         <li>the naming is awfull and what was indentend as puns is a pain</li>
         <li>for dimension greater than 3 results are consistent</li>
-        <li>I did it alone at home because I could, without thinking.</li>
+        <li>I did it alone, there is no great mind that can grant this is correct </li>
+        <li>Some bugs corrected during presentation not yet pushed to archery (v0.2)</li>
     </ul>
     <a href=http://pythonhosted.org/VectorDict/vector.html#exemples>VectorDict</a> is used O_o (I still have to push a pull request in pypi). I DO NOT recommend it, except for seeing the features I was initially encompassing.
     <br/>
@@ -608,6 +629,31 @@ I cannot say how much I consider the 2D class Point as misleading as <i>Hello wo
         <li>I don't really like to evangelize</li>
     </ul>
     </div>
+<div
+    class="step content " 
+    data-rotate=270 data-x="3500" data-y="-1000">
+<center>    <img src=img/thatsall.gif ><br></center>
+    <h1 class=big >Thanks to:</h1>      
+        <ul>
+        <li>
+        Stéphane Wirtel
+        </li>
+        <li>
+        FOSDEM
+        </li>
+        <li>
+        All the great coders that make FOSS fun!
+        </li>
+        <li>
+        <a href=http://twitter.com/bartaz />@bartaz</a> the author of impressjs used for this pres
+        </li>
+        <li>
+        <a href=http://www.mheducation.com/about.html >Mc Graw Hill edition</a> without which I would never have access to cheap non pedantic books during my studies (okay, I should also include <a href=http://www.oreilly.com/ >O'Reilly</a>)
+        </li>
+        </ul>
+    
+    </div>
+
 
 </div>
     <div id=printable >
