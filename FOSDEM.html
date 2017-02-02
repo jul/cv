@@ -12571,6 +12571,51 @@ $$T(A,B) = \frac{A \cdot B}{\|A\|^2 +\|B\|^2 - A \cdot B}$$
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Is-there-a-trick-to-algebreize-non-algebric-types?-">Is there a trick to algebreize non algebric types? <a class="anchor-link" href="#Is-there-a-trick-to-algebreize-non-algebric-types?-">&#182;</a></h2><p>In this case <em>cos</em> will not work we use:</p>
+$$\forall (u,v) \in E\times E,\ d(u,v) = \|u-v\|.$$<p>(math don't follow PEP8)</p>
+<p>For the distance</p>
+<p>You can thus define - \o/</p>
+<table>
+<thead><tr>
+<th>type</th>
+<th>overload sub with</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>levensthein/hamming</td>
+</tr>
+<tr>
+<td>sets</td>
+<td>len(a&amp;b)/len(u or b)</td>
+</tr>
+<tr>
+<td>tuple/lists</td>
+<td>Hamming/levenstehin</td>
+</tr>
+<tr>
+<td>int as bits</td>
+<td>....</td>
+</tr>
+<tr>
+<td>fallback</td>
+<td>1 - (self==other)</td>
+</tr>
+</tbody>
+</table>
+<p>PS : distance must stay symmetric |a-b| == |b-a|</p>
+<p>We may not now what is a+b but we may know |a-b|</p>
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p><strong>We may define for every algebraic dict (object?!) a distance as long as equal operator is defined</strong></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
