@@ -18,18 +18,7 @@
 
 }
 .content p,div, h1, h2,h3,table,tr {
-    /*margin-left:auto;
-      margin-right:auto;
-      min-width:40em;
-      line-height:1.1;
-      max-width:50em;
-     */
-
     font-family: 'Open Sans', Arial, sans-serif;
-    /*font-size:90%;*/
-
-
-    /*    max-width:50em;*/
 }
 @media screen { 
     .big  {
@@ -45,7 +34,6 @@
 #printable { 
     min-height:800px;
     max-width:50em;
-    line-height:1.4;
     font-size:15px;
 display:none;
 position:relative;
@@ -59,6 +47,9 @@ position:relative;
 }
 #printable h1 {
     font-size:110%;
+}
+#printable .coord { 
+	line-height:160% !important;
 }
 #printable h1 {
     line-height:1.2;
@@ -106,6 +97,10 @@ float:none !important;
 
 
 }
+.coord {
+	line-height:150% !important;
+}
+
 a,a:visited { color:#333; }
 .hint { display:none; }
 .hidden { display:none; }

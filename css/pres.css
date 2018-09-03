@@ -19,6 +19,61 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
+@keyframes crazy {
+  from {
+    color:yellow;
+    font-size:100%;
+    transform:rotate(0deg);
+  }
+  to {
+    color:blue;
+    font-size:300%;
+    /*transform:translate3d(-12px, 50%, -3em) rotateY(0);*/
+    transform:rotate(360deg);
+  }
+}
+.crazy {
+position:fixed;
+ animation-duration: 1s;
+  animation-name: crazy;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+small{
+    font-size:80%;
+    font-style:italic;
+}
+pre.vi{
+    font-family:monospace;
+    box-shadow:4px 4px 0 0 rgba(80,80,80,.2);
+    display:block;
+    background: #eee;
+}
+span.PreProc{
+    color:#484;
+    font-weight:bold;
+}
+span.Statement{
+    color:#33d;
+}
+span.LIdentifier {
+    color:#844;
+    font-weight:bold;
+}
+span.Identifier {
+    color:#444;
+    font-weight:bold;
+}
+span.Comment{
+    color:#888;
+}
+p.exergue {
+	padding:.5em;
+	font-size:110%;
+	box-shadow:6px 6px 0 0 rgba(80,80,80,.5);
+	border-radius:4px;
+	border:1px solid rgba(80,80,80,.5);
+}
 ul { 
 margin-left: 2em;
 }
@@ -190,7 +245,7 @@ a:hover, a:focus {
 */
 .impress-enabled .step {
     margin: 0;
-    opacity: 0.2;
+    opacity: 0.05;
 
     -webkit-transition: opacity 1s;
     -moz-transition:    opacity 1s;
@@ -292,6 +347,9 @@ a:hover, a:focus {
     -o-transform:      translateZ(50px);
     transform:         translateZ(50px);
 }
+h1 {
+    text-align:center;
+}
 
 #title .footnote {
     font-size: 32px;
@@ -306,8 +364,10 @@ a:hover, a:focus {
 .big {
     width: 600px;
     text-align: center;
-    font-size: 60px;
+    font-size: 4em;
     line-height: 1;
+    font-weight:bold;
+     text-shadow: 2px 2px 2px #555;
 }
 
 #big b {
@@ -666,6 +726,9 @@ a:hover, a:focus {
     -ms-transition:     opacity 1s 5s,     -ms-transform 0.5s 4.5s;
     -o-transition:      opacity 1s 5s,      -o-transform 0.5s 4.5s;
     transition:         opacity 1s 5s,         transform 0.5s 4.5s;
+}
+#printable{
+    line-height:150%;
 }
 
 /*
