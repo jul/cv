@@ -1,0 +1,33 @@
+
+.header {
+animation: marquee 30s linear infinite;
+}
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(100%, 0); }
+}
+#small_code {
+    font-size:70%;
+}
+h1, h2, h3, h4, h5 {
+color:white;
+background: #46A;
+font-family:sans-serif;
+border:2px solid #359;
+border-radius:15px;
+box-shadow:4px 4px 5px black;
+padding-left:1em;
+padding-top:.2em;
+padding-bottom:.2em;
+font-weight:700;
+
+
+}
+.footer {
+    position:fixed;
+    bottom:0px;
+}
+body {
+font-family: Georgia;
+font-size:120%;
+}
