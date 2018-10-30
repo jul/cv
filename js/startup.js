@@ -41,6 +41,7 @@ $(".fallback-message").hide();
 }
 };
 $(document).ready(function() { 
+    reveal_cv();
     $(".loading").hide();
     cv=$('#printable').html();
     $(".content").each(function(i,el) { cv+=$(el).html() + "<br/><br/>" });
