@@ -72,20 +72,19 @@ data = {
         "CO": 2,
         "MX": 2
     }
+data.AQ = data[""]
 delete (data[""])
 max = Object.values(data).reduce((a,b) => Math.max(a,b))
 Object.keys(data).forEach( function(k) {
-    if (k) {
     svgkey = "#" + k.toLowerCase()
     console.log(svgkey)
     color = "#0000" + ( 256 - Math.ceil( (data[k] / max * 255))).toString(16).padStart(2,"0").toUpperCase();
     console.log(color)
     $(svgkey).attr("fill",color) 
     $(svgkey).on("mouseenter",
-    (e) => { console.log("her" + k); $(".hover").show(); $(".hover").html(k+ ":" + data[k] ) }).on("mouseleave",
+    (e) => { console.log("her" + k); $(".hover").show(); $(".hover").html(( k == "AQ" ? "private" : k ) + ":" + data[k] ) }).on("mouseleave",
 
     (e) => { $(".hover").hide() })
-    }
 })
 })
 </script>
