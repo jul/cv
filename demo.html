@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <head>
     <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AAAAAJ4YGAClFxcApRcXAKUWFgCkFRUApBQUAKQTEwCjEhIAoxESAKMREgCjAAAAnv///wAAAAAAAAAAAAAAAJ6zHQn/sx0J/7MdCf+zHQn/sx0J/7MdCf+zHQn/sx0J/7MdCf+zHQn/sx0J/7MdCf8BAQCfAAAAAAAAAAAREQCjsx0Ju7MdCbuzHQn/sx0J/7MdCf+zHQn/sx0J/7MdCf+zHQn/sx0J/7MdCf+zHQm7CwsAoQAAAAAAAAAAAAAARLMdCbuzHQm7sx0J/7MdCf+zHQn/sx0J/7MdCf+zHQn/sx0J/7MdCf+zHQm7sx0J/wAAAD4AAAAAAAAAAP///wAkJACosx0JlbMdCbuzHQn/sx0J/7MdCf+zHQn/sx0J/7MdCf+zHQn/sx0J/wAAAJ7///8AAAAAAAAAAAD///8AnZ2dCbMdCZWzHQm7sx0Ju7MdCf+zHQn/sx0J/7MdCf+zHQn/sx0JuzAvAqz///8A////AAAAAAAAAAAA////AP///wAAAABWsx0JlbMdCbuzHQm7sx0J/7MdCf+zHQn/sx0Ju7MdCf8AAAA/////AP///wAAAAAAAAAAAP///wD///8A////ACAgAKf8/6Bv/P+TXvz/AC/8/wAs/P8AKvz/llACAgCf////AP///wD///8AAAAAAAAAAAD///8A////AP///wCoqKgJaWsAiP3/oWj8/wAw/P8ALfz/i008PQCn/v7+AP///wD///8A////AAAAAAAAAAAA////AP///wD///8A////AAAAAFbW2ABB+/9rTfz/AC6PkQBRAAAAQP///wD///8A////AP///wAAAAAAAAAAAP///wD///8A////AP///wDt7e0EgYMAZ/v/ak9OTwCWP0AAr////wD///8A////AP///wD///8AAAAAAAAAAAD///8A////AP///wD///8AjY2NBoKEAGf9/2BP/P8AL2xtAGn///8A////AP///wD///8A////AAAAAAAAAAAA////AP///wD///8A////AI2NjQqEhQBn/P9JTfz/ADBpaQBz////AP///wD///8A////AP///wAAAAAAAAAAAP///wD///8A////AP///wCNjY0LhogAZ/z/REv8/wAxYGEAfv///wD///8A////AP///wD///8AAAAAAAAAAAD///8A////AP///wD///8AAAAAPMHEAE37/wA1/P8AMXd4AGLj4+MB////AP///wD///8A////AAAAAAAAAAAA////AP///wD///8A////AB8fAKcdHgCmHBwAphsbAKYaGgClBAUAoP///wD///8A////AP///wAAAAAAwAMAAIABAACAAQAAwAMAAMADAADgBwAA8A8AAPfvAAD73wAA//8AAP8/AAD//wAA//8AAP//AAD//wAA+B8AAA==" rel="icon" type="image/x-icon" />
@@ -1009,18 +1007,16 @@ $(document).ready(function() {
             delete (geo_data[""])
         }
         max = Object.values(geo_data).reduce((a,b) => Math.max(a,b))
-        console.log("max :" + max)
         $(".max").html(max)
         Object.keys(geo_data).forEach( function(k) {
             svgkey = "#" + k
             grad=( 256 - Math.ceil( (geo_data[k] / max * 256) )).toString(16).padStart(2,"0").toUpperCase()
-            console.log(grad)
             color = "#" + grad + grad + "FF" ;
             $(svgkey).attr("fill",color)
             $(svgkey).attr("strike","black")
             $(svgkey).on("mouseenter",
                 (e) => {
-                    $(".hover").show(); console.log("hover"); $(".hover").html(( k == "AQ" ? "private address" : k ) + ":" + geo_data[k] ) }
+                    $(".hover").show();  $(".hover").html(( k == "AQ" ? "private address" : k ) + ":" + geo_data[k] ) }
                 ).on("mouseleave", (e) => { $(".hover").hide() })
         })
     }
@@ -1054,11 +1050,9 @@ $(document).ready(function() {
        return false;
     });
     if (data["by_country"] == undefined) {
-        console.log("geo is hidden since there is no by_country data")
         $(".router.geo").hide()
     }
     anchor = document.URL.match(/#[^\?]+/)
-    console.log("nchor"+anchor)
     $(".router").click( (e) => {
         e.preventDefault()
         var href=$(e.target)[0].attributes.href
@@ -1069,8 +1063,7 @@ $(document).ready(function() {
         if (anchor)
             url += anchor
         history.pushState({}, null,  url)
-        var query = new URLSearchParams( url)
-        console.log("route:" + route);
+        var query = new URLSearchParams( url);
         ({
             "chrono": () => { 
                 $(".content").hide(); $("." + route).show();
@@ -1094,7 +1087,6 @@ $(document).ready(function() {
     var query = new URLSearchParams(window.location.search )
     route = query.get("route")
     if (route == undefined ) {
-        console.log("default route")
         if (data.by_country) {
             $(".router.geo").click()
         } else {
@@ -1104,11 +1096,9 @@ $(document).ready(function() {
     } else {
         $(".router." + route).click()
     }
-    console.log("anchor is " + anchor)
     if (anchor != undefined){
         $(".selector." +  anchor[0].substr(1)).click()
     }
-    console.log("ready")
 
     function update_for(category, top){
 
@@ -1175,7 +1165,6 @@ $(document).ready(function() {
             .attr("fill", "#46A")
             .attr("stroke", "#eef")
         if (!top) {
-            console.log("too much ticks")
             if (k.length > (max_ticks)) {
                 every= Math.floor(k.length/(max_ticks))
                 var ticks = d3.selectAll(".tick text");
