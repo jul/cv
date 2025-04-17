@@ -1,15 +1,30 @@
 <html>
 <head>
 <style>
+.svgcentered, .centered {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+}
 .hover {
     position:fixed;
     margin: auto;
     left:50%;
     top:50%;
+    background:#EEF;
+    
     padding:1em;
     border:1px solid black;
     border-radius:5px;
     display:none;
+}
+.gradient {
+    background:linear-gradient(0.25turn, #0000FF, #000000) !important;
+    width:1000px;
+    height:1em;
+    border:1px solid black;
+    display:inline-block;
 }
 </style>
 
@@ -75,6 +90,7 @@ data = {
 data.AQ = data[""]
 delete (data[""])
 max = Object.values(data).reduce((a,b) => Math.max(a,b))
+$(".max").html(max)
 Object.keys(data).forEach( function(k) {
     svgkey = "#" + k.toLowerCase()
     if (k =="AQ") {
@@ -96,10 +112,9 @@ Object.keys(data).forEach( function(k) {
 <div class=hover>
 
 </div>
-
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1"
+<svg class=svgcentered version="1.1"
 	id="Earth" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" 
 	xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1000" height="507.224" viewBox="0 0 1000 507.224" enable-background="new 0 0 1000 507.224" xml:space="preserve">
 <defs>
@@ -5166,4 +5181,8 @@ Object.keys(data).forEach( function(k) {
 	<text x="546" y="313" id="ZW-label" font-size="5" font-family="Verdana">Zimbabwe</text>
 </g>
 </svg>
+<br/>
+<div class=centered>
+0 <div class=gradient ></div><span class=max></span>
+</div>
 </body>
