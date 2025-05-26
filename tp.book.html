@@ -370,6 +370,417 @@ une aventure commune</h1>
 Licence Anti Gad Elmaleh : Fais ce que tu veux avec ce livre sauf dire
 que tu l’as écris</p>
 </header>
-
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#pourquoi-pas" id="toc-pourquoi-pas">Pourquoi pas
+?</a></li>
+<li><a href="#plantons-le-décor" id="toc-plantons-le-décor">Plantons le
+décor</a>
+<ul>
+<li><a href="#pourquoi-pas-administrateur-système"
+id="toc-pourquoi-pas-administrateur-système">Pourquoi pas administrateur
+système ?</a></li>
+<li><a href="#pourquoi-pas-développeur-python"
+id="toc-pourquoi-pas-développeur-python">Pourquoi pas développeur python
+?</a></li>
+<li><a href="#pourquoi-pas-devops" id="toc-pourquoi-pas-devops">Pourquoi
+pas devops ?</a></li>
+</ul></li>
+<li><a href="#une-routine-saine-pour-une-recherche-saine"
+id="toc-une-routine-saine-pour-une-recherche-saine">une routine saine
+pour une recherche saine</a>
+<ul>
+<li><a href="#contenir-le-temps" id="toc-contenir-le-temps">Contenir le
+temps</a></li>
+<li><a href="#qui-trop-embrasse-mal-étreint"
+id="toc-qui-trop-embrasse-mal-étreint">Qui trop embrasse mal
+étreint</a></li>
+<li><a href="#déminer" id="toc-déminer">Déminer</a></li>
+<li><a href="#pourquoi-pas-déménageur"
+id="toc-pourquoi-pas-déménageur">Pourquoi pas déménageur ?</a></li>
+<li><a href="#pourquoi-pas-autre-chose"
+id="toc-pourquoi-pas-autre-chose">Pourquoi pas autre chose ?</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="pourquoi-pas">Pourquoi pas ?</h1>
+<p>Jusqu’à présent, j’ai toujours vu la recherche d’emploi comme une
+période démoralisante « où tu fais ta pute ».</p>
+<p>Tu vas voir quelqu’un qui va faire un bénéfice net sur ton cul, et
+son but et que tu lui coûtes moins cher que tu lui rapportes … sauf
+quand t’es une rock star, un super employé que l’on trouve en haut de la
+pyramide des budgets de l’entreprise où tu décides des enveloppes et
+bizarrement aussi de la tienne.</p>
+<p>C’est de bonne guerre ; si tu étais si finaud, t’avais qu’à faire un
+MBA avant tes 40 ans, hériter à 50, et monter ta boîte.</p>
+<p>Voilà, c’est pas compliqué, il suffit de travailler dur pour y
+arriver. Pour les autres, « y’a qu’à traverser la rue ». Moi, je
+traverse la rue en regardant à droite et à gauche avant de traverser. Et
+c’est ce que je vais vous conter. Pourquoi ? Parce que la recherche
+d’emploi, j’ai décidé que ce serait fun cette fois.</p>
+<p>Manque de pot, les emplois que je vise sont « des centres de coûts ».
+Dans une entreprise tu as le muscle : celui qui va faire du porte à
+porte pour vendre ton produit, et la graisse : l’humain qu’on aimerait
+bien remplacer qui coûte de manière récurrente en masse salariale sans
+que l’on puisse estimer combien il rapporte. C’est la production et les
+opérations.</p>
+<h1 id="plantons-le-décor">Plantons le décor</h1>
+<h2 id="pourquoi-pas-administrateur-système">Pourquoi pas administrateur
+système ?</h2>
+<p>Exemple : un sysadmin qui au vu des offres actuelles vaut 50 000€/an
+brut n’a pas de valeurs quand il fait bien son boulot, car quand il fait
+bien son boulot tout marche « sans problèmes ». Pour estimer ta valeur,
+il est bien que l’entreprise ait une idée du coût de combien ça coûte
+quand ça foire.</p>
+<p>Genre, ton serveur de commandes de produit tombe alors tes pertes en
+nouvelles commandes sont linéaires avec le temps (modulo la saisonnalité
+du business).</p>
+<p>Et le mieux, c’est tu es un accident X jours par an (du point de vue
+du sysadmin) car ton patron peut lier ta valeur à combien ça coûte quand
+ça marche pas.</p>
+<p>C’est ce que fait la profession (pas planter la prod, hein), elle
+estime ainsi sa valeur et en dérive deux valeurs essentiels qui sont
+l’alpha et l’oméga de la valeur du sysadmin : la SLA et la GTR.</p>
+<p>La SLA c’est l’acronyme anglais pour disponibilité (Service Level
+Agreement) : combien une entreprise tolère de pouvoir avoir ses serveurs
+arrêtés volontairement ou non par an.</p>
+<p>Il est à noter que par exemple pour faire tester des plans de
+reprises d’activités ou pour maintenance on peut volontairement vouloir
+arrêter ses serveurs.</p>
+<p>La SLA magique visée dans le milieu est 99.999%. 0.1%
+d’indisponibilité c’est 4h.</p>
+<p>La GTR c’est la Garantie de Temps de Rétablissement dans le cas le
+pire quand il y a une couille. Disons que si t’as GTR est de 4h, avec un
+incident par an sur un truc central, tu es déjà en SLA de 99.9%.</p>
+<p>Alors je crois pas en la magie, quand on m’annonce ce niveau de
+disponibilité visé et que je postule pour une offre de sysadmin : je
+fuis sauf si le patron s’appelle google est a la caillasse à la hauteur
+de ses ambitions. Oui, ce niveau magique est atteignable, mais comme
+j’ai appris en science expérimentale, tout est possible, ça dépend juste
+de ton budget.</p>
+<p>Vous voyez google est un spécialiste de l’infra distribuée,
+redondante. La plupart des entreprises aimeraient viser la place de
+google, mais ils ne sont pas prêts à développer leur propre hardware,
+système d’exploitation, protocole de routage réseau logiciels … vu
+qu’ils ont déjà des cactus dans les poches à embaucher du sysadmin. Je
+veux dire quand tu connais les salaires des googleurs, tu pleures ; on
+ne joue pas dans la même catégorie.</p>
+<p>D’ailleurs, si (je ne citerais pas de noms) certains avaient un
+syndrome de l’imposteur avant d’entrer dans ce genre de boîte, un
+salaire à 6 chiffres le soigne vite et bien.</p>
+<p>Donc, comme aucun sysadmin honnête qui a déjà eu à faire à des
+fournisseurs business (notamment les telcos <a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+avec des GTR souvent de 4h heures ouvrées <a href="#fn2"
+class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> tu
+peux difficilement espérer dans le cas le pire qui pourrait impliquer un
+incident réseau opérateur une GTR inférieure à 4h.</p>
+<p>Et encore, si tu veux une SLA de 99.9% avec ta GTR de 4h, il faut
+prendre en compte le temps de diagnostic nécessaire à mettre le nez dans
+le caca au BON fournisseur. En général, ça prend pas une demi heure.
+Donc, la SLA avec un truc centralisé qui a une panne réseau, en général
+c’est pas une solution d’avenir.</p>
+<p>Le rôle d’un sysadmin n’est pas tant de s’assurer qu’il y ait pas de
+problèmes que de s’assurer que les problèmes ne se voient pas. En
+général, ça nécessite une infrastructure redondante, qui tel un avion
+moderne bi moteur est capable d’assurer 100% du service sur une partie
+des infras en attendant que la partie en panne soit rétablie pendant la
+période critique où les infras sont en mode dégradée.</p>
+<p>C’est devenu une spécialisation à part entière du métier de sysadmin
+qui est SRE engineer (ingénieur de fiabilité des services). Ça pète
+moins en le disant en français c’est pour ça qu’on utilise l’acronyme
+anglais.</p>
+<p>Bref, admin sys c’est un métier sympa de prod où les astreintes, les
+réponses sur incidents en urgence, les plans de reprise d’activité font
+partie de ton épée de Damoclès quotidienne.</p>
+<p>La bonne façon de le gérer, c’est de se préparer au pire et de
+s’organiser AVANT les incidents pour répondre aux incidents. Voir même,
+parfois de faire des tests grandeurs natures pour vérifier qu’une
+solution miracle sensée améliorer cette fameuse SLA fort coûteuse et
+complexe tient bien ses promesses à petites échelles (temporelle et
+locale) avant d’être déployée. Tenir un laboratoire et y faire des
+déploiements de nouveaux services en faire la qualification et le
+recettage (de la mise en chantier quoi), fait aussi parti du métier.</p>
+<p>C’est un métier, plus que développeur, où la sécurité informatique
+est prise au sérieux, notamment sa culture. En sysadmin, le ticket
+d’intervention est l’équivalent du commit du codeur.</p>
+<p>Il est important de laisser des traces de ce que l’on fait et de les
+terminer à la fin de chaque jour ouvré, des fois que l’incident soit soi
+même qui se mange un bus en allant au travail le lendemain matin.</p>
+<p>Pourquoi ? Parce qu’une infra au contraire du code est un objet
+fondamentalement mutable. Et qu’il faut pouvoir connaître l’état des
+mutations tant des infras que des opérations en cours et/ou récemment
+terminées.</p>
+<p>Tiens le serveur de base de données est tombé à 16h00 ce vendredi, il
+y avait-il une intervention en cours ?</p>
+<p>Et la culture sécurité n’est pas de documenter ses interventions pour
+blâmer le quidam, mais dans une culture « juste » pour corriger les
+erreurs. Par exemple si un quidam a commis une boulette sur un
+équipement où il était autorisé, la réponse logique RH<a href="#fn3"
+class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>
+consiste à lui proposer une formation si il est en manque de
+connaissance et peut être de modifier les processus RH</p>
+<p>La sécurité c’est aussi de la paperasse. Je le dis d’une manière qui
+a l’air péjorative, mais de même que le codeur est structurés par des
+normes (IETF, 3GPP, unicode, ISO) qui évitent de réinventer la roue, le
+sysadmin lui est plus sensibilisé aux normes de « conformité ». Genre la
+ISO 27001 concernant la cybersécurité, ou la conformité RGPD concernant
+la protection et le recueil des données à caractère personnel.</p>
+<p>On (rarement les sysadmins) identifie des risques, on identifie les
+coûts associés aux risques (genre fuite de données, interruption de
+services…) et le sysadmin se voit inclus dans la démarche de conformité.
+Ça peut être vu comme une lourdeur pour certains, car assez souvent les
+normes de conformité impliquent la traçabilité des actions et donc leurs
+documentations à la fois en amont (décrire comment tel ou tel problèmes
+est adressé) et au fil de l’eau : « faire ce que l’on dit, dire ce que
+l’on fait, et accepter d’être audité). Ça peut avoir un coté
+inconfortable que tous n’acceptent pas de vivre « dans une maison de
+verre ». Moi, tant que l’entreprise respecte la culture « juste »
+sécurité (la même qu’en aviation), ça me va.</p>
+<p>C’est un super métier.</p>
+<h2 id="pourquoi-pas-développeur-python">Pourquoi pas développeur python
+?</h2>
+<p>J’ai déjà décrit dans <a
+href="https://jul.github.io/cv/yahi.html">Loser du libre</a> un autre de
+mes livres libre ma vision du développement python en disant des choses
+très méchantes sur les entreprises quant à la livraison du code.</p>
+<p>Grand père était maçon, malgré ses aventures que je découvre au
+détour des conversation avec les voisins, il était discret, et ne m’a
+transmis qu’une chose de sa culture : un bon ouvrier se reconnaît au
+fait que son établi est toujours propre. La propreté est au cœur de tout
+les métiers. Et l’informatique n’y coupe pas.</p>
+<p>Par exemple, là où en tant que sysadmin j’accepte que mon travail
+soit en « cours de mutation » (genre un backup peut prendre 2 jours dans
+des circonstances spéciales), en informatique, j’aime que ma paillasse
+soit propre en permanence.</p>
+<p>Même si je ne pousse pas mes modifs, je les découpe en tâches qui
+tiennent dans une journée et m’arrange pour que quand je quitte mon
+poste de travail, il n’y ait pas de « code en cours ». J’appelle tout ce
+qui a un début et une fin : un chantier, et ce que je commence et
+termine dans une journée un « micro chantier ». Et je pense important de
+garder l’autonomie sur les micros chantiers (jalons) qui permettent de
+garantir un avancement du chantier global sans mauvaises surprises par
+rapport notamment aux délais.</p>
+<p>Dans la pratique du code, les allers retours avec les clients par le
+truchement des « tickets » si chers aux sysadmins, mais pas autant
+appréciés des développeurs se sont généralisées. Perso, ça me va, même
+si ça peut interrompre quand c’est mal géré un tunnel de concentration
+pour coder.</p>
+<p>En effet, quand on code, il faut remonter le contexte en mémoire avec
+des tas de paramètres et variables et c’est comme jongler : un souffle
+de bruit, d’interruption et hop : tout tombe.</p>
+<p>Donc, en général j’apprécie les entreprises qui permettent de
+planifier sa journée en discutant autour d’un café (le mieux) ou d’un
+scrum meeting (avec un café) avec l’équipe pour préparer sa journée.</p>
+<p>Il y a aussi une tâche pas très folichône à réaliser quand on est dev
+et que je conseille de faire TOUS les jours c’est « l’imputation de
+budget ». En général, un développeur travaille rarement sur un produit
+ou pour un client exclusivement. Et ce parfois sur une journée (ce qui
+est pas glop).</p>
+<p>Je vous ai déjà dit qu’un sysadmin aussi c’est un centre de coût ? Un
+dev aussi. Comparé à du hardware, le temps homme coûte un bras.
+Externalisé il coûte 350-1500€/jours internalisé, je peux pas trop dire
+car c’est plus difficile d’avoir accès aux salaires qu’au tarif
+freelance (j’ai eu pratiqué le freelance). Mais en interne un dev coûte
+-<em>salaires différés<a href="#fn4" class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a> compris</em>- bien moins qu’un
+externe. On considère que par exemple un Espace de Service Numérique
+(anciennement SSII, parfois appelés marchand de viande par les mauvais
+esprits) doit faire une culbute de x2.7 pour permettre aux non dévs de
+(bien) vivre.</p>
+<p>Donc, si en tant que développeur vous voulez survivre longtemps, être
+sûr d’être imputé sur un « projet/budget » rentable n’est pas un truc
+dont il faut s’enquérir une fois en intégration chez le client. Je
+suggère quand vous êtes en entretien d’embauche de vous « intéresser »
+fortement aux projets sur lequel vous allez être non seulement
+techniquement, mais aussi en terme de viabilité à long terme. En
+général, le client/recruteur vous embauche pour un besoin spécifique,
+sur un projet.</p>
+<p>Et dans la partie « mines », je développerais l’implication que ça
+a.</p>
+<h2 id="pourquoi-pas-devops">Pourquoi pas devops ?</h2>
+<p>Face aux manque de fluidité d’avoir un métier résolument conservateur
+face à la prise de risque (les administrateurs systèmes) et un autre
+résolument en mode YOLO, on pète tout à chaque nouvelle version, le
+métier informatique a élaboré un espèce de métier hybride à l’interface
+entre les deux : le DevOPS.</p>
+<p>C’est une méthodologie et un outillage qui diffère des deux métiers
+précédemment cités, mais sans apporter de disruption.</p>
+<p>Le développeur est mis en contrôle d’un pipeline de production
+intégré qui lui permet idéalement d’avoir un espace de développement
+identique à la prod. Là où avant il y avait un passage de relais<a
+href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a> des produits finis par les dévs,
+testés … en recettage (parfois ignoré), puis une bascule en production
+de manière récurrente et programmées, on passe à une architecture en
+déploiement continu où les développeurs sont canalisés par les outils
+d’intégration continus à fournir test/recettage/validation
+systématiquement à chaque étape du développement.</p>
+<p>En plus comme c’est bien fait les outils modernes, quand ça foire on
+a un bouton « rollback » (annuler) qui permet de revenir à l’état
+immuable précédent.</p>
+<p>Ça demande un peu plus de compétences que simplement développeur, ou
+sysadmin car il faut s’intéresser à plus de parties traditionnellement
+dévolues à l’Assurance Qualité, l’administration système, et parfois
+même au support.</p>
+<p>Dans ce contexte, le sysadmin est bien plus sollicité que dans une
+infrastructure classique quand il est internalisé, car les
+infrastructure devops sont bien moins stables que les infrastructures
+classiques en terme de publication de (base de données, serveurs web,
+équilibreurs de charges, DNS …) et cerise sur le gâteau devops il y a
+cette partie opaque qui est pour le moins plus compliquée qu’on appelle
+« le réseau défini par le logiciel » (Software Defined Networks) qui
+intègre non seulement le graph de connexion entre les services, mais
+aussi … tadam … la sécurisation des services.</p>
+<p>Ce qui fait qu’en général, devops rime avec disparition des sysadmins
+hors -<em>et je m’enquiers du sujet car il est important</em>- DNS,
+gestion des identités (LDAP/AD/Oauth) et pour les domaines les plus
+critiques mails.</p>
+<p>Pourquoi les mails me direz vous ?</p>
+<p>Car de nos jours moults procédures de récupération de mots de passe
+passent par les emails. Et quand on est critique (nucléaire, défense,
+service public) c’est mieux de garder les services d’identifications
+directs et indirects proches et de pouvoir garantir leur intégrité.
+M’enfin, les gens vont ce qu’ils veulent.</p>
+<p>Et pour le DNS, j’ai envie de sortir un proverbe sysadmin courant :
+<em>« It’s always DNS »</em>[^DNS]</p>
+<p>Bref, devops c’est comme un développeur dont les infrastructures ont
+été pensé pour qu’il puisse déployer du logiciel « sans coutures ».
+J’entends par sans coutures qu’il n’y a pas besoin de faire une
+interruption programmée des infras pour dérouler le nouveau code et ça
+minimise en intégrant l’Assurance Qualité tout au long du processus les
+mauvaises surprises.</p>
+<p>Moi, je trouve que c’est une chouette évolution du métier de
+développeur qui me convient :D</p>
+<p>[^DNS] : c’est toujours de la faute du serveur de nom de domaine</p>
+<h1 id="une-routine-saine-pour-une-recherche-saine">une routine saine
+pour une recherche saine</h1>
+<p>Primo, la recherche d’emploi n’est pas « un métier à temps plein »,
+pour deux raisons :</p>
+<ul>
+<li>qui trop embrasse mal étreint ;</li>
+<li>la vaisselle va pas se laver toute seule.</li>
+</ul>
+<p>Je vous conseille de lire mon livre sur <a
+href="https://jul.github.io/cv/haf.book.html">la vie palpitante d’homme
+au foyer</a> sur le sujet :D</p>
+<p>Oui écrire fais tu bien, ça permet d’objectiver ce que l’on fait, de
+le découper en rondelle et de bien le ranger dans le cerveau. Ça me
+permet de détourner des routines professionnelles obsessives en élan
+créatif. Lol.</p>
+<h2 id="contenir-le-temps">Contenir le temps</h2>
+<p>Pour ne pas devenir chèvre il est important de ne pas laisser le
+temps de recherche d’emploi mordre sur les autres temps et de rythmer
+ses activités. Pas au métronome certes, mais à la louche.</p>
+<p>Genre, je dédie ma matinée : à envoyer les machines à laver (linge et
+vaisselle) pour préparer l’après recherche d’emploi puis à la recherche
+d’emploi elle même. Comme ça je me retrouve pas sous un monceau de
+tâches à rattraper après.</p>
+<p>La recherche d’emploi est découpée en 3 phases :</p>
+<ul>
+<li>présent : l’écrémage et la sélection des offres en mode ; celui qui
+se lève le plus tôt répond le plus tôt.</li>
+<li>passé : relire le CV, l’améliorer, intégrer les retours, republier
+les CVs PARTOUT où ils sont présents.</li>
+<li>futur : écrire ce livre pour le fun, et planifier le retour à
+l’emploi (faire faire un peu plus de tâches à ma fille pour la
+sensibiliser au coût homme du bordel)</li>
+</ul>
+<h2 id="qui-trop-embrasse-mal-étreint">Qui trop embrasse mal
+étreint</h2>
+<p>Vu que l’IA se développe, c’est plus que jamais le moment de chiader
+les lettres de motivations à la main. Ce qui veut dire que pour chaque
+offre d’emploi, vous avez intérêt à vous en souvenir et avec trop
+d’offres d’emplois vous allez oublier quelque chose qui était peut être
+votre petit plus.</p>
+<p>En ce qui me concerne j’ai deux techniques pour réduire l’empreinte
+mémoire de chaque lettres de motivations :</p>
+<ul>
+<li>avoir toujours le même plan Vous (l’entreprise et ce qui m’intéresse
+chez elle), Moi, Nous (pourquoi nous sommes faits pour nous
+entendre)</li>
+<li>être sous mes vraies couleurs.</li>
+</ul>
+<p>Ne pas mentir me permet de ne pas avoir à me souvenir de ce que j’ai
+raconté me concernant et mes aspirations.</p>
+<p>Bon, je dis pas tout, comme par exemple que j’ai une cervicale qui me
+scie un nerf et que j’aimerais bien retrouver un boulot pour éviter de
+terminer paralysé d’un bras car je trouve que c’est un peu anxiogène, et
+puis surtout ça pourrait me couper d’un job de développeur/déménageur
+qui pourrait voir le jour.</p>
+<p>Revenons à l’IA : elle a les défauts de ses qualités.</p>
+<ul>
+<li>elle est pédante, on croirait un prof d’université bien campé dans
+ses certitudes, hyper confiante ;</li>
+<li>elle est hyper verbeuse ;</li>
+<li>elle hallucine</li>
+</ul>
+<p>Pour toutes ces raisons j’ai développé une routine d’écriture anti
+IA. Après tout, si il y a une fonction d’entreprise qu’elle menace de
+plein fouet dans sa capacité à « classifier » et « générer de la
+parlotte », c’est bien les ressources humaines.</p>
+<p>J’ai testé le vibe coding (coder assisté par IA) et malheureusement
+pour l’IA elle s’est plantée : son point faible c’est le traitement du
+signal et l’acoustique. Je dis ça, mon pote ben a eu exactement les
+mêmes problèmes du fait que l’IA est à coté de la plaque dès qu’il
+s’agit d’intégrer le théorème de Shannon (sur échantillonage) ou celui
+de Nyquist (sous échantillonage).</p>
+<p>Ça m’a fait plaisir de voir que d’une part mon temps sur les bancs de
+l’unif n’avait pas été en vain, et d’autre part que l’IA ne me menaçait
+pas directement tant que je sais où réside ma valeur : dans mon
+éducation scientifique.</p>
+<p>C’est de cette expérience que j’en ai pondu mon <a
+href="https://gist.github.com/jul/ae03e76173c73265c9ed45f06ba2b1c3">accordeur
+de guitare en python</a></p>
+<p>Donc ami RH, amie RHe, sache que je suis avec toi de tout mon cœur.
+Et voilà mes recettes pour tenter de concurrencer l’IA à l’écrit</p>
+<ul>
+<li>une petite phrase humoristique pour dire que c’est pas écrit par IA
+;</li>
+<li>la concision avec mon plan en 3 parties bien explicite (Vous, Nous,
+Moi)</li>
+<li>la clarté avec un style plus relâché que d’habitude (moins pète sec,
+sans être familier)</li>
+</ul>
+<p>Est-ce que ça marche ?</p>
+<p>J’en sais rien, mais moi ça m’arrange, ça me permet de me distinguer
+de la concurrence.</p>
+<h2 id="déminer">Déminer</h2>
+<h2 id="pourquoi-pas-déménageur">Pourquoi pas déménageur ?</h2>
+<p>Lol, le contrat journalier (donc tu refais ton entretien d’embauche
+tout les jours) payé 10€/h pour 7h30 théorique, 15h effectif à trimer
+comme un damné je ne dis pas que j’ai pas aimé, mais je dis que pour
+aller chercher ma fille à l’école c’est un peu tendax.</p>
+<p>J’ai adoré être déménageur, c’était un autre monde, comme un voyage
+dans la société, avec des gens que j’ai pas mal aimé. Je me suis senti
+proche de mes collègues ; y’avait un vrai esprit d’équipe car on était
+tous à vouloir rentrer le plus tôt possible chez nous ; on était tous
+dans la même galère du patron abusif qui nous faisait enchaîner les
+chantiers au delà des heures alors que c’est pas la pratique.</p>
+<p>Ça s’appelle la cohésion face à une menace réelle.</p>
+<h2 id="pourquoi-pas-autre-chose">Pourquoi pas autre chose ?</h2>
+<p>Pour moi, pour vous, être ouvert à autres choses, c’est une
+possibilité de découverte.</p>
+<p>Le « voyage social » est aussi intéressant que le voyage tout court,
+moi je suis sur terre, et j’aime la vie, notamment car elle est capable
+de toujours nous montrer des choses nouvelles et je ne connais peu
+d’expériences qui soient désagréables.</p>
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>opérateurs télécoms et réseaux dans le jargon telco<a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>business hour en français de Paris<a href="#fnref2"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Ressources Humaines<a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>appelés <strong>charges salariales</strong> par les
+patrons<a href="#fnref4" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>handover en français de Paris<a href="#fnref5"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
 </body>
 </html>
