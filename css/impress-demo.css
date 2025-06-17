@@ -46,6 +46,28 @@ q:before, q:after {
 table {
     border-collapse: collapse;
     border-spacing: 0;
+
+}
+table.res {
+	border: 2px solid;
+    border-spacing: 2;
+}
+table.res td {
+		padding:.2em;
+		line-height:2em;
+}
+table.res tr:nth-child(even) {background: #ddd}
+td.cko {
+		color:red;
+	font-weight:bold;
+}
+td.cok {
+		color:green;
+	font-weight:bold;
+}
+table.res  th {
+	font-weight:bold;
+	background-color:#CCC;
 }
 
 /*

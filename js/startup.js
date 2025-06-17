@@ -41,9 +41,10 @@ $(".fallback-message").hide();
 }
 };
 $(document).ready(function() { 
+    reveal_cv();
     $(".loading").hide();
     cv=$('#printable').html();
-    $(".content").each(function(i,el) { cv+=$(el).html() });
+    $(".content").each(function(i,el) { cv+=$(el).html() + "<br/><br/>" });
     $('#printable').html(cv);
    
 $('#jcprt').click =reveal_cv;

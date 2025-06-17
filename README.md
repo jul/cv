@@ -1,4 +1,4 @@
 cv
 ==
 
-http://jul.github.com/cv
+[Resume/CV](https://jul.github.io/cv/#printable)
