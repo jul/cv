@@ -2,6 +2,19 @@
 <head>
 <title>CV Julien Tayon</title>
 <style>
+@media print {
+  * { margin: 0 !important; padding: 0 !important; }
+  #controls, .footer, .footerarea{ display: none; }
+  html, body {
+    /*changing width to 100% causes huge overflow and wrap*/
+    height:100%;
+    overflow: hidden;
+    background: #FFF;
+    font-size: 9.5pt;
+  }
+
+  li { margin: 0 0 10px 20px !important;}
+}
 body {
   color: #444;
   font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
@@ -104,6 +117,9 @@ h6 {
   font-size: 0.9em;
 }
 
+td:first-child {
+    text-align:left;
+}
 blockquote {
   color: #666666;
   margin: 0;
@@ -119,6 +135,7 @@ hr {
   border-bottom: 1px solid #eee;
   margin: 1em 0;
   padding: 0;
+}
 
 </style>
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
